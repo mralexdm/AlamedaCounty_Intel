@@ -47,6 +47,7 @@ from urllib.parse import unquote, urljoin, urlparse
 CLERK_PORTAL_URL = "https://www.acgov.org/auditor/clerk/opr/"
 CLERK_APP_URL = "https://rechart1.acgov.org/"
 CLERK_REAL_ESTATE_SEARCH_URL = "https://rechart1.acgov.org/RealEstate/SearchEntry.aspx"
+CLERK_REAL_ESTATE_NEW_SESSION_URL = f"{CLERK_REAL_ESTATE_SEARCH_URL}?e=newSession"
 PROPERTY_BULK_DATA_URL = (
     "https://data.acgov.org/datasets/2b026350b5dd40b18ed7a321fdcdba81_0/about"
 )
@@ -222,7 +223,7 @@ REQUESTED_DOC_CODES = [
 CLERK_DOC_TYPE_LABELS: dict[str, tuple[str, ...]] = {
     "LP": ("NOTICE ACTION (LIS PENDENS)",),
     "NOFC": ("NOTICE OF TRUSTEE SALE", "ORDER FORECLOSURE", "CERTIFICATE REDEMPTION FORECLOSURE"),
-    "TAXDEED": ("TAX LIST", "TRUSTEES DEED", "TRUSTEES DEED NO DA FEE"),
+    "TAXDEED": ("TAX DEED", "TAX COLLECTOR DEED", "TREASURER DEED"),
     "JUD": (
         "JUDGMENT",
         "ABSTRACT OF JUDGMENT",
@@ -240,10 +241,135 @@ CLERK_DOC_TYPE_LABELS: dict[str, tuple[str, ...]] = {
     "LNMECH": ("MECHANICS LIEN", "EXTENSION MECHANICS LIEN"),
     "LNHOA": ("NOTICE LIEN", "NOTICE LIEN (OTHER)"),
     "MEDLN": ("NOTICE LIEN", "NOTICE LIEN (OTHER)"),
-    "PRO": ("ORDER SALE", "ORDER APPOINTING TRUSTEE", "ORDER SETTING APART HOMESTEAD"),
+    "PRO": (
+        "AFFIDAVIT OF DEATH",
+        "DECREE DISTRIBUTION",
+        "DEED - REVOCABLE TRANSFER ON DEATH DEED",
+        "ORDER SALE",
+    ),
     "NOC": ("NOTICE COMPLETION", "NOTICE CESSATION LABOR"),
-    "RELLP": ("RELEASE", "RELEASE OF LIEN", "PARTIAL RELEASE"),
+    "RELLP": ("RELEASE OF LIS PENDENS", "RELEASE LIS PENDENS", "WITHDRAWAL OF LIS PENDENS"),
 }
+
+CLERK_DOC_TYPE_RULES: dict[str, dict[str, tuple[str, ...]]] = {
+    "LP": {
+        "aliases": ("notice action", "lis pendens"),
+        "exclude": ("release", "withdrawal", "expungement", "cancel"),
+    },
+    "NOFC": {
+        "aliases": (
+            "notice default",
+            "notice of default",
+            "notice of trustee sale",
+            "trustee sale",
+            "order foreclosure",
+            "substitution of trustee",
+            "sub of trustee",
+            "default certification",
+            "request notice default",
+        ),
+        "exclude": ("cancel", "release", "reconveyance", "redemption"),
+    },
+    "TAXDEED": {
+        "aliases": ("tax deed", "tax collector deed", "treasurer deed"),
+        "exclude": (),
+    },
+    "JUD": {
+        "aliases": ("abstract of judgment", "judgment"),
+        "exclude": ("release", "partial", "subordination", "certified", "dissolution", "separation", "nullity"),
+    },
+    "CCJ": {
+        "aliases": ("certified judgment", "certified copy of judgment"),
+        "exclude": ("release", "satisfaction"),
+    },
+    "DRJUD": {
+        "aliases": (
+            "judgment dissolution",
+            "dissolution marriage",
+            "legal separation",
+            "judgment nullity",
+            "decree divorce",
+            "separate maintenance",
+            "decree dissolution",
+        ),
+        "exclude": ("release", "partial"),
+    },
+    "LNCORPTX": {
+        "aliases": (
+            "tax lien (state)",
+            "tax lien or extension (state)",
+            "tax lien (county)",
+            "tax lien (city)",
+            "tax lien (others)",
+            "tax lien (other)",
+        ),
+        "exclude": ("release", "partial", "cancel"),
+    },
+    "LNIRS": {
+        "aliases": ("tax lien (fed)", "federal tax lien"),
+        "exclude": ("release", "partial"),
+    },
+    "LNFED": {
+        "aliases": ("notice of federal interest", "federal lien", "federal tax lien", "tax lien (fed)"),
+        "exclude": ("release", "partial"),
+    },
+    "LN": {
+        "aliases": ("notice lien", "notice lien (other)", "lien agreement", "order lien transfer", "order void lien"),
+        "exclude": ("mechanic", "mechanics", "tax", "release", "partial", "subordination", "bond"),
+    },
+    "LNMECH": {
+        "aliases": ("mechanics lien", "mechanic lien", "extension mechanics lien"),
+        "exclude": ("release", "partial"),
+    },
+    "LNHOA": {
+        "aliases": ("assessment lien", "hoa", "homeowner association", "homeowners association", "association lien"),
+        "exclude": ("release", "partial"),
+    },
+    "MEDLN": {
+        "aliases": ("medicaid lien", "medi-cal lien", "dhcs lien"),
+        "exclude": ("release", "partial"),
+    },
+    "PRO": {
+        "aliases": (
+            "affidavit death",
+            "affidavit of death",
+            "decree distribution",
+            "decree assigning estate",
+            "letters testamentary",
+            "letters administ",
+            "letters conservator",
+            "letters guardian",
+            "transfer on death",
+            "death deed",
+            "decree terminating interest",
+            "order sale",
+        ),
+        "exclude": ("release", "terminating guardianshi"),
+    },
+    "NOC": {
+        "aliases": ("notice commencement", "notice completion", "notice cessation"),
+        "exclude": ("cancel",),
+    },
+    "RELLP": {
+        "aliases": (
+            "release of lis pendens",
+            "withdrawal of lis pendens",
+            "release lis pendens",
+            "withdrawal of notice of action",
+            "release of notice of action",
+        ),
+        "exclude": (),
+    },
+}
+
+RESULT_CAP = 300
+MAX_RESULT_PAGES = int(os.getenv("MAX_RESULT_PAGES", "50"))
+STEALTH_JS = """
+Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });
+Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
+window.chrome = window.chrome || { runtime: {} };
+"""
 
 OWNER_COLUMNS = ("OWNER", "OWN1", "OWNER_NAME", "OwnerName", "Owner")
 SITE_ADDRESS_COLUMNS = ("SITE_ADDR", "SITEADDR", "SitusAddress", "PROPERTY_ADDRESS")
@@ -1005,14 +1131,34 @@ async def enter_clerk_app(page: Any) -> None:
         if await landing_link.count() > 0:
             href = await landing_link.get_attribute("href")
             if href:
-                await page.goto(href, wait_until="networkidle", timeout=15000)
+                await page.goto(href, wait_until="domcontentloaded", timeout=15000)
     except Exception:
         pass
 
     if not re.search(r"rechart1\.acgov\.org", str(page.url), re.I):
-        await page.goto(CLERK_REAL_ESTATE_SEARCH_URL, wait_until="networkidle", timeout=15000)
+        await page.goto(CLERK_REAL_ESTATE_NEW_SESSION_URL, wait_until="domcontentloaded", timeout=15000)
 
+    await pass_clerk_challenge(page)
     await accept_disclaimer(page)
+
+
+async def pass_clerk_challenge(page: Any) -> None:
+    for _ in range(8):
+        if await is_real_estate_search_page(page):
+            return
+        try:
+            body = clean_text(await page.text_content("body") or "")
+        except Exception:
+            body = ""
+        low = body.lower()
+        if "acknowledge" in low or "disclaimer" in low:
+            return
+        if "something went wrong" in low or "support id" in low or len(body.strip()) < 40:
+            try:
+                await page.reload(wait_until="domcontentloaded", timeout=15000)
+            except Exception:
+                pass
+        await page.wait_for_timeout(2500)
 
 
 async def open_search_surface(page: Any) -> None:
@@ -1047,12 +1193,13 @@ async def open_search_surface(page: Any) -> None:
             return
 
     for target in (
+        CLERK_REAL_ESTATE_NEW_SESSION_URL,
         CLERK_REAL_ESTATE_SEARCH_URL,
-        f"{CLERK_REAL_ESTATE_SEARCH_URL}?e=newSession",
         urljoin(CLERK_APP_URL, "Search.aspx"),
     ):
         try:
-            await page.goto(target, wait_until="networkidle", timeout=15000)
+            await page.goto(target, wait_until="domcontentloaded", timeout=15000)
+            await pass_clerk_challenge(page)
             await accept_disclaimer(page)
             if await is_real_estate_search_page(page):
                 return
@@ -1159,13 +1306,6 @@ async def fill_date_fields(page: Any, start_date: dt.date, end_date: dt.date) ->
 
 
 async def set_document_type(page: Any, doc_code: str) -> bool:
-    labels = [
-        *CLERK_DOC_TYPE_LABELS.get(doc_code, ()),
-        doc_code,
-        *LEAD_TYPES.get(doc_code, {}).get("labels", ()),
-    ]
-    labels = [label for label in labels if label]
-
     try:
         await page.evaluate(
             """() => {
@@ -1181,49 +1321,61 @@ async def set_document_type(page: Any, doc_code: str) -> bool:
     except Exception:
         pass
 
-    for label in labels:
-        try:
-            checked = await page.evaluate(
-                """labelText => {
-                    const norm = value => String(value || '')
-                        .replace(/\\s+/g, ' ')
-                        .trim()
-                        .toUpperCase();
-                    const wanted = norm(labelText);
-                    const labels = Array.from(document.querySelectorAll('label'));
-                    for (const label of labels) {
-                        const text = norm(label.textContent);
-                        if (text === wanted || text.includes(wanted)) {
-                            const id = label.getAttribute('for');
-                            const input = id ? document.getElementById(id) : label.querySelector("input[type='checkbox']");
-                            if (input && input.type === 'checkbox') {
-                                input.checked = true;
-                                input.dispatchEvent(new Event('input', { bubbles: true }));
-                                input.dispatchEvent(new Event('change', { bubbles: true }));
-                                return true;
-                            }
-                        }
-                    }
-                    return false;
-                }""",
-                label,
-            )
-            if checked:
-                return True
-        except Exception:
-            pass
+    exact_labels = [
+        *CLERK_DOC_TYPE_LABELS.get(doc_code, ()),
+        *LEAD_TYPES.get(doc_code, {}).get("labels", ()),
+    ]
+    rules = CLERK_DOC_TYPE_RULES.get(doc_code, {})
+    matched_ids: list[str] = []
+    try:
+        matched_ids = await page.evaluate(
+            """([exactLabels, aliases, excludes]) => {
+                const norm = value => String(value || '').replace(/\\s+/g, ' ').trim().toUpperCase();
+                const exact = exactLabels.map(norm).filter(Boolean);
+                const alias = aliases.map(value => String(value || '').toLowerCase()).filter(Boolean);
+                const exclude = excludes.map(value => String(value || '').toLowerCase()).filter(Boolean);
+                const out = [];
+                for (const label of Array.from(document.querySelectorAll('label'))) {
+                    const id = label.getAttribute('for');
+                    const input = id ? document.getElementById(id) : label.querySelector("input[type='checkbox']");
+                    if (!input || input.type !== 'checkbox') continue;
+                    const text = String(label.textContent || '').replace(/\\s+/g, ' ').trim();
+                    const low = text.toLowerCase();
+                    const exactHit = exact.some(item => norm(text) === item || norm(text).includes(item));
+                    const aliasHit = alias.length && alias.some(item => low.includes(item));
+                    const excluded = exclude.some(item => low.includes(item));
+                    if ((exactHit || aliasHit) && !excluded) out.push(input.id);
+                }
+                return Array.from(new Set(out));
+            }""",
+            [exact_labels, list(rules.get("aliases", ())), list(rules.get("exclude", ()))],
+        )
+    except Exception as exc:
+        logging.debug("Could not gather document type checkboxes for %s: %s", doc_code, exc)
 
-        try:
-            locator = page.locator(f"label:text-is('{label}')").first
-            if await locator.count() > 0:
-                label_for = await locator.get_attribute("for")
-                if label_for:
-                    await page.locator(f"#{label_for}").check(force=True, timeout=1500)
-                    return True
-                await locator.click(force=True, timeout=1500)
-                return True
-        except Exception:
-            pass
+    if matched_ids:
+        for checkbox_id in matched_ids:
+            try:
+                box = page.locator(f"#{checkbox_id}")
+                await box.scroll_into_view_if_needed(timeout=3000)
+                await box.check(force=True, timeout=3000)
+            except Exception:
+                try:
+                    await page.evaluate(
+                        """id => {
+                            const input = document.getElementById(id);
+                            if (input && !input.checked) {
+                                input.click();
+                                input.dispatchEvent(new Event('change', { bubbles: true }));
+                            }
+                        }""",
+                        checkbox_id,
+                    )
+                except Exception as exc:
+                    logging.debug("Could not check document type %s for %s: %s", checkbox_id, doc_code, exc)
+        return True
+
+    labels = [label for label in exact_labels if label]
 
     selects = page.locator("select")
     select_count = await selects.count()
@@ -1284,6 +1436,102 @@ async def submit_search(page: Any) -> None:
         pass
 
 
+async def result_total(page: Any) -> int | None:
+    try:
+        body = clean_text(await page.text_content("body") or "")
+    except Exception:
+        return None
+    match = re.search(r"\((\d+)\s+records?\s+found", body, re.I)
+    if match:
+        return int(match.group(1))
+    match = re.search(r"\b(\d+)\s+records?\s+found", body, re.I)
+    if match:
+        return int(match.group(1))
+    return None
+
+
+async def click_next_results_page(page: Any) -> bool:
+    selectors = (
+        "[id$='imgNext']",
+        "[id*='imgNext']",
+        "input[id*='Next'][type='image']",
+        "a:has-text('Next')",
+        "input[type='submit'][value*='Next' i]",
+    )
+    for selector in selectors:
+        try:
+            locator = page.locator(selector).first
+            if await locator.count() == 0 or not await locator.is_visible():
+                continue
+            if await locator.get_attribute("disabled") is not None:
+                continue
+            await locator.click(timeout=5000, force=True)
+            try:
+                await page.wait_for_load_state("networkidle", timeout=20000)
+            except Exception:
+                await page.wait_for_timeout(1500)
+            return True
+        except Exception:
+            continue
+    return False
+
+
+async def collect_result_pages(page: Any, doc_code: str) -> tuple[list[ClerkRecord], int | None]:
+    records: list[ClerkRecord] = []
+    total = await result_total(page)
+    for _ in range(MAX_RESULT_PAGES):
+        content = await page.content()
+        page_records = parse_clerk_records_from_html(content, str(page.url), doc_code)
+        records.extend(page_records)
+        deduped = dedupe_clerk_records(records)
+        if total is not None and len(deduped) >= total:
+            return deduped, total
+        if not await click_next_results_page(page):
+            return deduped, total
+        records = deduped
+    return dedupe_clerk_records(records), total
+
+
+async def search_doc_code_window(
+    page: Any,
+    doc_code: str,
+    start_date: dt.date,
+    end_date: dt.date,
+) -> tuple[list[ClerkRecord], int | None]:
+    await open_search_surface(page)
+    await fill_date_fields(page, start_date, end_date)
+    if not await set_document_type(page, doc_code):
+        logging.info("Clerk search %s skipped; no matching Alameda document labels", doc_code)
+        return [], None
+    await submit_search(page)
+    return await collect_result_pages(page, doc_code)
+
+
+async def search_doc_code(
+    page: Any,
+    doc_code: str,
+    start_date: dt.date,
+    end_date: dt.date,
+) -> list[ClerkRecord]:
+    records, total = await search_doc_code_window(page, doc_code, start_date, end_date)
+    if total is not None and total >= RESULT_CAP and start_date < end_date:
+        logging.warning(
+            "Clerk search %s hit portal cap (%s); rerunning day-by-day",
+            doc_code,
+            total,
+        )
+        day_records = list(records)
+        cur = start_date
+        while cur <= end_date:
+            daily, daily_total = await search_doc_code_window(page, doc_code, cur, cur)
+            if daily_total is not None and daily_total >= RESULT_CAP:
+                logging.warning("Clerk search %s still hit cap on %s", doc_code, cur)
+            day_records.extend(daily)
+            cur += dt.timedelta(days=1)
+        return dedupe_clerk_records(day_records)
+    return dedupe_clerk_records(records)
+
+
 async def fetch_clerk_records_with_playwright(start_date: dt.date, end_date: dt.date) -> list[ClerkRecord]:
     try:
         from playwright.async_api import async_playwright
@@ -1298,21 +1546,31 @@ async def fetch_clerk_records_with_playwright(start_date: dt.date, end_date: dt.
     all_records: list[ClerkRecord] = []
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=headless)
+        browser = await p.chromium.launch(
+            headless=headless,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+            ],
+        )
         context = await browser.new_context(
             accept_downloads=True,
-            user_agent=(
-                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-                "(KHTML, like Gecko) Chrome/125 Safari/537.36"
-            ),
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            locale="en-US",
+            timezone_id="America/Los_Angeles",
+            viewport={"width": 1500, "height": 1000},
+            ignore_https_errors=True,
         )
+        await context.add_init_script(STEALTH_JS)
         page = await context.new_page()
         page.set_default_timeout(timeout)
 
         try:
             await page.goto(CLERK_PORTAL_URL, wait_until="networkidle", timeout=timeout)
         except Exception:
-            await page.goto(CLERK_REAL_ESTATE_SEARCH_URL, wait_until="networkidle", timeout=timeout)
+            await page.goto(CLERK_REAL_ESTATE_NEW_SESSION_URL, wait_until="domcontentloaded", timeout=timeout)
 
         await enter_clerk_app(page)
         await public_login(page)
@@ -1320,12 +1578,7 @@ async def fetch_clerk_records_with_playwright(start_date: dt.date, end_date: dt.
 
         for doc_code in REQUESTED_DOC_CODES:
             try:
-                await open_search_surface(page)
-                await fill_date_fields(page, start_date, end_date)
-                await set_document_type(page, doc_code)
-                await submit_search(page)
-                content = await page.content()
-                records = parse_clerk_records_from_html(content, str(page.url), doc_code)
+                records = await search_doc_code(page, doc_code, start_date, end_date)
                 logging.info("Clerk search %s returned %s parsed rows", doc_code, len(records))
                 all_records.extend(records)
             except Exception as exc:  # noqa: BLE001
@@ -1369,16 +1622,22 @@ def value_by_header(row: dict[str, str], patterns: Iterable[str]) -> str:
 
 def classify_doc_type(doc_code: str, text: str) -> tuple[str, str, str] | None:
     text_norm = normalize_key(text)
+    text_low = clean_text(text).lower()
     if not text_norm and doc_code in LEAD_TYPES:
         info = LEAD_TYPES[doc_code]
         return doc_code, info["cat"], info["cat_label"]
 
     for code in REQUESTED_DOC_CODES:
         info = LEAD_TYPES.get(code, {})
-        possible = [code, *info.get("labels", ()), *CLERK_DOC_TYPE_LABELS.get(code, ())]
+        possible = [*info.get("labels", ()), *CLERK_DOC_TYPE_LABELS.get(code, ())]
         for label in possible:
             if normalize_key(label) and normalize_key(label) in text_norm:
                 return code, info.get("cat", code), info.get("cat_label", label)
+        rules = CLERK_DOC_TYPE_RULES.get(code, {})
+        aliases = rules.get("aliases", ())
+        excludes = rules.get("exclude", ())
+        if aliases and any(alias in text_low for alias in aliases) and not any(ex in text_low for ex in excludes):
+            return code, info.get("cat", code), info.get("cat_label", code)
 
     info = LEAD_TYPES.get(doc_code)
     if info:
@@ -1596,10 +1855,17 @@ def is_requested_record(record: ClerkRecord, doc_code: str = "") -> bool:
     if not record.doc_num or not record.filed:
         return False
     text = f"{record.doc_type} {record.raw}".upper()
+    text_low = f"{record.doc_type} {record.raw}".lower()
     if doc_code and doc_code in LEAD_TYPES:
         info = LEAD_TYPES[doc_code]
-        terms = [doc_code, *info.get("labels", ()), *CLERK_DOC_TYPE_LABELS.get(doc_code, ())]
-        return bool(record.doc_type) and any(normalize_key(term) in normalize_key(text) for term in terms)
+        terms = [*info.get("labels", ()), *CLERK_DOC_TYPE_LABELS.get(doc_code, ())]
+        rules = CLERK_DOC_TYPE_RULES.get(doc_code, {})
+        aliases = rules.get("aliases", ())
+        excludes = rules.get("exclude", ())
+        exact_hit = any(normalize_key(term) in normalize_key(text) for term in terms)
+        alias_hit = bool(aliases) and any(alias in text_low for alias in aliases)
+        excluded = any(ex in text_low for ex in excludes)
+        return bool(record.doc_type) and (exact_hit or alias_hit) and not excluded
     return classify_doc_type(doc_code or record.doc_type, text) is not None
 
 
@@ -1756,7 +2022,13 @@ def build_output(records: list[dict[str, Any]], start_date: dt.date, end_date: d
 
 
 def write_json_outputs(payload: dict[str, Any]) -> None:
-    for target in (DASHBOARD_DIR / "output.json", DATA_DIR / "output.json"):
+    targets = (
+        DASHBOARD_DIR / "output.json",
+        DATA_DIR / "output.json",
+        DASHBOARD_DIR / "records.json",
+        DATA_DIR / "records.json",
+    )
+    for target in targets:
         target.parent.mkdir(parents=True, exist_ok=True)
         tmp = target.with_suffix(".json.tmp")
         tmp.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -1780,11 +2052,17 @@ def split_person_name(owner: str) -> tuple[str, str]:
 
 
 def write_ghl_csv(records: list[dict[str, Any]]) -> None:
-    for target in (DASHBOARD_DIR / "ghl_export.csv", DATA_DIR / "ghl_export.csv"):
+    targets = (
+        DASHBOARD_DIR / "ghl_export.csv",
+        DATA_DIR / "ghl_export.csv",
+        DASHBOARD_DIR / "leads_ghl.csv",
+        DATA_DIR / "leads_ghl.csv",
+    )
+    for target in targets:
         target.parent.mkdir(parents=True, exist_ok=True)
         tmp = target.with_suffix(".csv.tmp")
         with tmp.open("w", encoding="utf-8", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=GHL_COLUMNS)
+            writer = csv.DictWriter(f, fieldnames=GHL_COLUMNS, lineterminator="\n")
             writer.writeheader()
             for record in records:
                 first, last = split_person_name(record.get("owner", ""))

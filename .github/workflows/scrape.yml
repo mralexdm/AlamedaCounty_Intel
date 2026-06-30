@@ -4,6 +4,17 @@ on:
   schedule:
     - cron: "0 7 * * *"
   workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: "Days to look back"
+        required: false
+        default: "7"
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - ".github/workflows/scrape.yml"
 
 permissions:
   contents: write
@@ -20,6 +31,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -34,22 +47,25 @@ jobs:
 
       - name: Run scraper
         env:
-          LOOKBACK_DAYS: "7"
+          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '7' }}
         run: python src/scraper.py
 
       - name: Prepare dashboard artifact
         run: |
           cp data/output.json dashboard/output.json
+          cp data/records.json dashboard/records.json
 
       - name: Commit updated records
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/output.json dashboard/output.json dashboard/ghl_export.csv data/ghl_export.csv
+          git add data/output.json dashboard/output.json data/records.json dashboard/records.json
+          git add dashboard/ghl_export.csv data/ghl_export.csv dashboard/leads_ghl.csv data/leads_ghl.csv
           if git diff --cached --quiet; then
             echo "No record changes to commit."
           else
             git commit -m "Update Alameda County lead records"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
             git push
           fi
 
