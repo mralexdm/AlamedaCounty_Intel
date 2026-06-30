@@ -46,6 +46,7 @@ from urllib.parse import unquote, urljoin, urlparse
 
 CLERK_PORTAL_URL = "https://www.acgov.org/auditor/clerk/opr/"
 CLERK_APP_URL = "https://rechart1.acgov.org/"
+CLERK_REAL_ESTATE_SEARCH_URL = "https://rechart1.acgov.org/RealEstate/SearchEntry.aspx"
 PROPERTY_BULK_DATA_URL = (
     "https://data.acgov.org/datasets/2b026350b5dd40b18ed7a321fdcdba81_0/about"
 )
@@ -217,6 +218,32 @@ REQUESTED_DOC_CODES = [
     "NOC",
     "RELLP",
 ]
+
+CLERK_DOC_TYPE_LABELS: dict[str, tuple[str, ...]] = {
+    "LP": ("NOTICE ACTION (LIS PENDENS)",),
+    "NOFC": ("NOTICE OF TRUSTEE SALE", "ORDER FORECLOSURE", "CERTIFICATE REDEMPTION FORECLOSURE"),
+    "TAXDEED": ("TAX LIST", "TRUSTEES DEED", "TRUSTEES DEED NO DA FEE"),
+    "JUD": (
+        "JUDGMENT",
+        "ABSTRACT OF JUDGMENT",
+        "JUDGMENT - NO FEE",
+        "JUDGMENT DISSOLUTION MARRIAGE",
+        "JUDGMENT LEGAL SEPARATION",
+        "JUDGMENT NULLITY",
+    ),
+    "CCJ": ("ABSTRACT OF JUDGMENT", "JUDGMENT"),
+    "DRJUD": ("JUDGMENT DISSOLUTION MARRIAGE", "JUDGMENT LEGAL SEPARATION", "JUDGMENT NULLITY"),
+    "LNCORPTX": ("NOTICE OF TAX LIEN (STATE)", "NOTICE OF TAX LIEN OR EXTENSION (STATE)"),
+    "LNIRS": ("NOTICE OF TAX LIEN (FED)",),
+    "LNFED": ("NOTICE OF TAX LIEN (FED)", "NOTICE OF FEDERAL INTEREST"),
+    "LN": ("NOTICE LIEN", "NOTICE LIEN (OTHER)", "LIEN AGREEMENT"),
+    "LNMECH": ("MECHANICS LIEN", "EXTENSION MECHANICS LIEN"),
+    "LNHOA": ("NOTICE LIEN", "NOTICE LIEN (OTHER)"),
+    "MEDLN": ("NOTICE LIEN", "NOTICE LIEN (OTHER)"),
+    "PRO": ("ORDER SALE", "ORDER APPOINTING TRUSTEE", "ORDER SETTING APART HOMESTEAD"),
+    "NOC": ("NOTICE COMPLETION", "NOTICE CESSATION LABOR"),
+    "RELLP": ("RELEASE", "RELEASE OF LIEN", "PARTIAL RELEASE"),
+}
 
 OWNER_COLUMNS = ("OWNER", "OWN1", "OWNER_NAME", "OwnerName", "Owner")
 SITE_ADDRESS_COLUMNS = ("SITE_ADDR", "SITEADDR", "SitusAddress", "PROPERTY_ADDRESS")
@@ -866,6 +893,19 @@ async def accept_disclaimer(page: Any) -> None:
         "a#cph1_lnkAccept",
         "a[href*='lnkAccept']",
     ]
+    for selector in candidates:
+        try:
+            locator = page.locator(selector).first
+            await locator.wait_for(state="attached", timeout=6000)
+            await locator.click(timeout=5000, force=True)
+            try:
+                await page.wait_for_load_state("networkidle", timeout=10000)
+            except Exception:
+                pass
+            return
+        except Exception:
+            continue
+
     if await click_if_present(page, candidates, timeout=5000):
         try:
             await page.wait_for_load_state("networkidle", timeout=10000)
@@ -925,8 +965,72 @@ async def public_login(page: Any) -> None:
         pass
 
 
+async def is_clerk_error_page(page: Any) -> bool:
+    try:
+        body = clean_text(await page.text_content("body") or "")
+    except Exception:
+        return False
+    return bool(
+        re.search(
+            r"fatal\s+system\s+error|file\s+'.*?'\s+does\s+not\s+exist|server\s+error",
+            body,
+            re.I,
+        )
+    )
+
+
+async def is_real_estate_search_page(page: Any) -> bool:
+    if await is_clerk_error_page(page):
+        return False
+    if re.search(r"SearchResults\.aspx", str(page.url), re.I):
+        return False
+    try:
+        if await page.locator("input[title='Date Filed From, format mm/dd/yyyy']").count() == 0:
+            return False
+    except Exception:
+        return False
+    try:
+        body = clean_text(await page.text_content("body") or "")
+    except Exception:
+        body = ""
+    return bool(
+        re.search(r"Date Filed From|Document Type|Real Estate", body, re.I)
+        and re.search(r"Search", body, re.I)
+    )
+
+
+async def enter_clerk_app(page: Any) -> None:
+    try:
+        landing_link = page.locator("a[href*='rechart1.acgov.org'][href*='RealEstate/SearchEntry.aspx']").first
+        if await landing_link.count() > 0:
+            href = await landing_link.get_attribute("href")
+            if href:
+                await page.goto(href, wait_until="networkidle", timeout=15000)
+    except Exception:
+        pass
+
+    if not re.search(r"rechart1\.acgov\.org", str(page.url), re.I):
+        await page.goto(CLERK_REAL_ESTATE_SEARCH_URL, wait_until="networkidle", timeout=15000)
+
+    await accept_disclaimer(page)
+
+
 async def open_search_surface(page: Any) -> None:
+    if await is_real_estate_search_page(page):
+        return
+
+    if re.search(r"SearchResults\.aspx", str(page.url), re.I):
+        if await click_if_present(page, ["text=/new search/i"], timeout=5000):
+            try:
+                await page.wait_for_load_state("networkidle", timeout=10000)
+            except Exception:
+                pass
+            if await is_real_estate_search_page(page):
+                return
+
     link_patterns = [
+        "text=/acknowledge the disclaimer/i",
+        "text=/enter the site/i",
         "text=/official records/i",
         "text=/search records/i",
         "text=/record search/i",
@@ -939,21 +1043,75 @@ async def open_search_surface(page: Any) -> None:
             await page.wait_for_load_state("networkidle", timeout=10000)
         except Exception:
             pass
-        return
+        if await is_real_estate_search_page(page):
+            return
 
-    for path in ("SearchEntry.aspx", "RealEstate/SearchEntry.aspx", "Search.aspx"):
+    for target in (
+        CLERK_REAL_ESTATE_SEARCH_URL,
+        f"{CLERK_REAL_ESTATE_SEARCH_URL}?e=newSession",
+        urljoin(CLERK_APP_URL, "Search.aspx"),
+    ):
         try:
-            await page.goto(urljoin(CLERK_APP_URL, path), wait_until="networkidle", timeout=15000)
-            body = await page.text_content("body")
-            if body and re.search(r"search|document|record", body, re.I):
+            await page.goto(target, wait_until="networkidle", timeout=15000)
+            await accept_disclaimer(page)
+            if await is_real_estate_search_page(page):
                 return
         except Exception:
             continue
+
+    raise RuntimeError(f"Could not open Alameda real estate search page; current URL: {page.url}")
 
 
 async def fill_date_fields(page: Any, start_date: dt.date, end_date: dt.date) -> None:
     start = start_date.strftime("%m/%d/%Y")
     end = end_date.strftime("%m/%d/%Y")
+    start_state = f"|0|01{start_date.year}-{start_date.month}-{start_date.day}-0-0-0-0||"
+    end_state = f"|0|01{end_date.year}-{end_date.month}-{end_date.day}-0-0-0-0||"
+    try:
+        await page.evaluate(
+            """([start, end, startState, endState, startYear, startMonth, startDay, endYear, endMonth, endDay]) => {
+                const setValue = (selector, value) => {
+                    const input = document.querySelector(selector);
+                    if (!input) return false;
+                    input.value = value;
+                    input.classList.remove('igte_ElectricBlueNullText', 'igte_NullText');
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    input.dispatchEvent(new Event('change', { bubbles: true }));
+                    input.dispatchEvent(new Event('blur', { bubbles: true }));
+                    return true;
+                };
+                const fromPicker = typeof $find === 'function' ? $find('cphNoMargin_f_ddcDateFiledFrom') : null;
+                const toPicker = typeof $find === 'function' ? $find('cphNoMargin_f_ddcDateFiledTo') : null;
+                if (fromPicker?.set_value) fromPicker.set_value(new Date(startYear, startMonth - 1, startDay));
+                if (toPicker?.set_value) toPicker.set_value(new Date(endYear, endMonth - 1, endDay));
+                return [
+                    setValue("input[title='Date Filed From, format mm/dd/yyyy']", start),
+                    setValue("input[title='Date Filed To, format mm/dd/yyyy']", end),
+                    setValue("#cphNoMargin_f_ddcDateFiledFrom_clientState", startState),
+                    setValue("#cphNoMargin_f_ddcDateFiledTo_clientState", endState),
+                ];
+            }""",
+            [
+                start,
+                end,
+                start_state,
+                end_state,
+                start_date.year,
+                start_date.month,
+                start_date.day,
+                end_date.year,
+                end_date.month,
+                end_date.day,
+            ],
+        )
+        values = await page.evaluate(
+            """() => Array.from(document.querySelectorAll("input[title^='Date Filed']")).map(input => input.value)"""
+        )
+        if len(values) >= 2 and values[0] == start and values[1] == end:
+            return
+    except Exception:
+        pass
+
     inputs = await page.locator("input:visible").element_handles()
     date_like: list[Any] = []
     for handle in inputs:
@@ -1001,8 +1159,71 @@ async def fill_date_fields(page: Any, start_date: dt.date, end_date: dt.date) ->
 
 
 async def set_document_type(page: Any, doc_code: str) -> bool:
-    labels = [doc_code, *LEAD_TYPES.get(doc_code, {}).get("labels", ())]
+    labels = [
+        *CLERK_DOC_TYPE_LABELS.get(doc_code, ()),
+        doc_code,
+        *LEAD_TYPES.get(doc_code, {}).get("labels", ()),
+    ]
     labels = [label for label in labels if label]
+
+    try:
+        await page.evaluate(
+            """() => {
+                for (const input of document.querySelectorAll("input[type='checkbox']")) {
+                    if (input.checked) {
+                        input.checked = false;
+                        input.dispatchEvent(new Event('change', { bubbles: true }));
+                        input.dispatchEvent(new Event('click', { bubbles: true }));
+                    }
+                }
+            }"""
+        )
+    except Exception:
+        pass
+
+    for label in labels:
+        try:
+            checked = await page.evaluate(
+                """labelText => {
+                    const norm = value => String(value || '')
+                        .replace(/\\s+/g, ' ')
+                        .trim()
+                        .toUpperCase();
+                    const wanted = norm(labelText);
+                    const labels = Array.from(document.querySelectorAll('label'));
+                    for (const label of labels) {
+                        const text = norm(label.textContent);
+                        if (text === wanted || text.includes(wanted)) {
+                            const id = label.getAttribute('for');
+                            const input = id ? document.getElementById(id) : label.querySelector("input[type='checkbox']");
+                            if (input && input.type === 'checkbox') {
+                                input.checked = true;
+                                input.dispatchEvent(new Event('input', { bubbles: true }));
+                                input.dispatchEvent(new Event('change', { bubbles: true }));
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                }""",
+                label,
+            )
+            if checked:
+                return True
+        except Exception:
+            pass
+
+        try:
+            locator = page.locator(f"label:text-is('{label}')").first
+            if await locator.count() > 0:
+                label_for = await locator.get_attribute("for")
+                if label_for:
+                    await page.locator(f"#{label_for}").check(force=True, timeout=1500)
+                    return True
+                await locator.click(force=True, timeout=1500)
+                return True
+        except Exception:
+            pass
 
     selects = page.locator("select")
     select_count = await selects.count()
@@ -1043,6 +1264,8 @@ async def set_document_type(page: Any, doc_code: str) -> bool:
 
 async def submit_search(page: Any) -> None:
     selectors = [
+        "#cphNoMargin_SearchButtons1_btnSearch",
+        "#cphNoMargin_SearchButtons2_btnSearch",
         "input[type='submit'][value*='Search' i]",
         "input[type='button'][value*='Search' i]",
         "button:has-text('Search')",
@@ -1089,9 +1312,9 @@ async def fetch_clerk_records_with_playwright(start_date: dt.date, end_date: dt.
         try:
             await page.goto(CLERK_PORTAL_URL, wait_until="networkidle", timeout=timeout)
         except Exception:
-            await page.goto(CLERK_APP_URL, wait_until="networkidle", timeout=timeout)
+            await page.goto(CLERK_REAL_ESTATE_SEARCH_URL, wait_until="networkidle", timeout=timeout)
 
-        await accept_disclaimer(page)
+        await enter_clerk_app(page)
         await public_login(page)
         await open_search_surface(page)
 
@@ -1152,7 +1375,7 @@ def classify_doc_type(doc_code: str, text: str) -> tuple[str, str, str] | None:
 
     for code in REQUESTED_DOC_CODES:
         info = LEAD_TYPES.get(code, {})
-        possible = [code, *info.get("labels", ())]
+        possible = [code, *info.get("labels", ()), *CLERK_DOC_TYPE_LABELS.get(code, ())]
         for label in possible:
             if normalize_key(label) and normalize_key(label) in text_norm:
                 return code, info.get("cat", code), info.get("cat_label", label)
@@ -1163,8 +1386,82 @@ def classify_doc_type(doc_code: str, text: str) -> tuple[str, str, str] | None:
     return None
 
 
+def parse_alameda_grid_records(soup: Any, base_url: str, doc_code: str = "") -> list[ClerkRecord]:
+    records: list[ClerkRecord] = []
+    for raw_row in soup.find_all("tr"):
+        cells = raw_row.find_all(["td", "th"])
+        values = [clean_text(cell.get_text(" ")) for cell in cells]
+        if len(values) < 9:
+            continue
+        if len(values) > 60:
+            continue
+
+        record: ClerkRecord | None = None
+        if (
+            len(values) > 15
+            and re.fullmatch(r"\d{1,4}", values[0] or "")
+            and re.fullmatch(r"\d{10,}", values[3] or "")
+            and parse_date(values[7])
+        ):
+            record = ClerkRecord(
+                doc_num=values[3],
+                filed=values[7],
+                doc_type=values[8],
+                owner=values[13] if len(values) > 13 else "",
+                grantee=values[15] if len(values) > 15 else "",
+                clerk_url=base_url,
+                raw={f"COL{i}": value for i, value in enumerate(values)},
+            )
+        else:
+            doc_idx = next(
+                (
+                    idx
+                    for idx, value in enumerate(values)
+                    if re.fullmatch(r"\d{10,}", value or "")
+                    and idx + 5 < len(values)
+                    and parse_date(values[idx + 4])
+                ),
+                -1,
+            )
+            if doc_idx >= 0:
+                name_combo = values[doc_idx + 7] if doc_idx + 7 < len(values) else ""
+                owner = values[doc_idx + 10] if doc_idx + 10 < len(values) else ""
+                grantee = values[doc_idx + 12] if doc_idx + 12 < len(values) else ""
+                if (not owner or not grantee) and name_combo:
+                    name_match = re.search(r"\[R\]\s*(.*?)\s*\[E\]\s*(.*)", name_combo, re.I)
+                    if name_match:
+                        owner = owner or clean_text(name_match.group(1))
+                        grantee = grantee or clean_text(name_match.group(2))
+                record = ClerkRecord(
+                    doc_num=values[doc_idx],
+                    filed=values[doc_idx + 4],
+                    doc_type=values[doc_idx + 5],
+                    owner=owner,
+                    grantee=grantee,
+                    clerk_url=base_url,
+                    raw={f"COL{i}": value for i, value in enumerate(values)},
+                )
+
+        if not record:
+            continue
+
+        link = raw_row.find("a", href=True)
+        if link:
+            record.clerk_url = urljoin(base_url, link.get("href"))
+        if is_requested_record(record, doc_code):
+            records.append(record)
+
+    return dedupe_clerk_records(records)
+
+
 def parse_clerk_records_from_html(page_html: str, base_url: str, doc_code: str = "") -> list[ClerkRecord]:
     soup = import_bs4()(page_html, "lxml")
+    alameda_grid_records = parse_alameda_grid_records(soup, base_url, doc_code)
+    if alameda_grid_records:
+        return alameda_grid_records
+    if "SearchResults.aspx" in base_url or soup.select_one("#cphNoMargin_cphNoMargin_g_G1"):
+        return []
+
     records: list[ClerkRecord] = []
 
     for table in soup.find_all("table"):
@@ -1242,9 +1539,6 @@ def clerk_record_from_row(row: dict[str, str], doc_code: str = "") -> ClerkRecor
     if not any((doc_num, doc_type, filed, owner, grantee, legal)):
         return None
 
-    if not doc_type and doc_code:
-        doc_type = doc_code
-
     return ClerkRecord(
         doc_num=doc_num,
         doc_type=doc_type,
@@ -1299,11 +1593,13 @@ def parse_records_from_text(text: str, base_url: str, doc_code: str) -> list[Cle
 
 
 def is_requested_record(record: ClerkRecord, doc_code: str = "") -> bool:
+    if not record.doc_num or not record.filed:
+        return False
     text = f"{record.doc_type} {record.raw}".upper()
     if doc_code and doc_code in LEAD_TYPES:
         info = LEAD_TYPES[doc_code]
-        terms = [doc_code, *info.get("labels", ())]
-        return any(normalize_key(term) in normalize_key(text) for term in terms) or not record.doc_type
+        terms = [doc_code, *info.get("labels", ()), *CLERK_DOC_TYPE_LABELS.get(doc_code, ())]
+        return bool(record.doc_type) and any(normalize_key(term) in normalize_key(text) for term in terms)
     return classify_doc_type(doc_code or record.doc_type, text) is not None
 
 
