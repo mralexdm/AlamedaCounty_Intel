@@ -1,0 +1,12 @@
+{
+  "fetched_at": null,
+  "source": "Alameda County Clerk-Recorder Public Records",
+  "date_range": {
+    "from": null,
+    "to": null,
+    "lookback_days": 7
+  },
+  "total": 0,
+  "with_address": 0,
+  "records": []
+}

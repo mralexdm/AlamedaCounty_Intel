@@ -1,0 +1,659 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alameda Seller Leads</title>
+  <style>
+    :root {
+      --bg: #f6f7f2;
+      --panel: #ffffff;
+      --ink: #202124;
+      --muted: #666b73;
+      --line: #d9ddd2;
+      --accent: #1f6f63;
+      --accent-2: #b84a32;
+      --accent-3: #375a7f;
+      --soft: #edf4f2;
+      --warn: #fff3df;
+      --danger: #f9e6e0;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    a {
+      color: var(--accent-3);
+    }
+
+    .shell {
+      width: min(1480px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 22px 0 36px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .meta {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 36px;
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .button:hover {
+      border-color: #b9c3bc;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(140px, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: var(--shadow);
+      min-height: 78px;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .stat .value {
+      margin-top: 4px;
+      font-size: 24px;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: minmax(220px, 2fr) minmax(160px, 1fr) minmax(140px, 0.8fr) minmax(150px, 1fr);
+      gap: 10px;
+      align-items: end;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: var(--shadow);
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: grid;
+      gap: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      padding: 8px 10px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(31, 111, 99, 0.12);
+    }
+
+    .table-wrap {
+      overflow: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      min-width: 1080px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px 11px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #f9faf7;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    tbody tr:hover {
+      background: #fbfcf8;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .score {
+      display: grid;
+      grid-template-columns: 46px minmax(70px, 1fr);
+      gap: 8px;
+      align-items: center;
+      min-width: 132px;
+    }
+
+    .score-num {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 32px;
+      border-radius: 6px;
+      background: var(--soft);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .score-num.hot {
+      background: var(--danger);
+      color: var(--accent-2);
+    }
+
+    .score-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: #e7e9e2;
+      overflow: hidden;
+    }
+
+    .score-fill {
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+    }
+
+    .score-fill.hot {
+      background: var(--accent-2);
+    }
+
+    .owner {
+      font-weight: 700;
+      max-width: 230px;
+      overflow-wrap: anywhere;
+    }
+
+    .subtle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .address {
+      max-width: 240px;
+      overflow-wrap: anywhere;
+    }
+
+    .doc {
+      max-width: 210px;
+      overflow-wrap: anywhere;
+    }
+
+    .amount {
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .flags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      max-width: 310px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      max-width: 100%;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: #235a51;
+      font-size: 12px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .pill.warn {
+      background: var(--warn);
+      color: #82510c;
+    }
+
+    .empty {
+      padding: 34px 18px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      .shell {
+        width: min(100% - 20px, 1480px);
+        padding-top: 14px;
+      }
+
+      .topbar,
+      .filters {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        justify-content: flex-start;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(130px, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar" aria-label="Dashboard header">
+      <div>
+        <h1>Alameda Seller Leads</h1>
+        <div class="meta" id="meta">Loading records...</div>
+      </div>
+      <div class="actions">
+        <button class="button" type="button" id="refreshBtn" title="Reload records">
+          <span aria-hidden="true">&#8635;</span>
+          Refresh
+        </button>
+        <a class="button primary" href="ghl_export.csv" title="Download GHL CSV">
+          <span aria-hidden="true">&#8595;</span>
+          GHL CSV
+        </a>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Lead totals">
+      <div class="stat">
+        <div class="label">Total Leads</div>
+        <div class="value" id="totalLeads">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">With Address</div>
+        <div class="value" id="withAddress">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Average Score</div>
+        <div class="value" id="avgScore">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Hot Leads</div>
+        <div class="value" id="hotLeads">0</div>
+      </div>
+    </section>
+
+    <section class="filters" aria-label="Lead filters">
+      <label>
+        Search
+        <input id="searchInput" type="search" placeholder="Owner, address, document, flag">
+      </label>
+      <label>
+        Lead Type
+        <select id="typeFilter">
+          <option value="">All lead types</option>
+        </select>
+      </label>
+      <label>
+        Min Score
+        <input id="scoreFilter" type="number" min="0" max="100" step="5" value="0">
+      </label>
+      <label>
+        Sort
+        <select id="sortSelect">
+          <option value="score">Score high to low</option>
+          <option value="filed">Newest filed</option>
+          <option value="owner">Owner A to Z</option>
+          <option value="type">Lead type</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="table-wrap" aria-label="Lead table">
+      <table>
+        <thead>
+          <tr>
+            <th>Score</th>
+            <th>Owner</th>
+            <th>Property</th>
+            <th>Mailing</th>
+            <th>Lead</th>
+            <th>Filed</th>
+            <th>Amount</th>
+            <th>Flags</th>
+            <th>Record</th>
+          </tr>
+        </thead>
+        <tbody id="recordsBody"></tbody>
+      </table>
+      <div class="empty hidden" id="emptyState">No records match the current filters.</div>
+    </section>
+  </main>
+
+  <script>
+    const state = {
+      payload: null,
+      records: [],
+      filtered: []
+    };
+
+    const els = {
+      meta: document.getElementById("meta"),
+      totalLeads: document.getElementById("totalLeads"),
+      withAddress: document.getElementById("withAddress"),
+      avgScore: document.getElementById("avgScore"),
+      hotLeads: document.getElementById("hotLeads"),
+      searchInput: document.getElementById("searchInput"),
+      typeFilter: document.getElementById("typeFilter"),
+      scoreFilter: document.getElementById("scoreFilter"),
+      sortSelect: document.getElementById("sortSelect"),
+      recordsBody: document.getElementById("recordsBody"),
+      emptyState: document.getElementById("emptyState"),
+      refreshBtn: document.getElementById("refreshBtn")
+    };
+
+    function safeText(value) {
+      return value === null || value === undefined ? "" : String(value);
+    }
+
+    function fmtDate(value) {
+      if (!value) return "";
+      const parsed = new Date(value);
+      if (Number.isNaN(parsed.getTime())) return value;
+      return parsed.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+    }
+
+    function fmtMoney(value) {
+      const number = Number(String(value || "").replace(/[^0-9.-]/g, ""));
+      if (!Number.isFinite(number) || number <= 0) return safeText(value);
+      return number.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+    }
+
+    function addressLine(record, prefix) {
+      const address = safeText(record[`${prefix}_address`]);
+      const city = safeText(record[`${prefix}_city`]);
+      const stateValue = safeText(record[`${prefix}_state`]);
+      const zip = safeText(record[`${prefix}_zip`]);
+      const place = [city, stateValue, zip].filter(Boolean).join(" ");
+      return [address, place].filter(Boolean);
+    }
+
+    function setTypeOptions(records) {
+      const current = els.typeFilter.value;
+      const types = [...new Set(records.map((r) => safeText(r.cat_label || r.cat)).filter(Boolean))].sort();
+      els.typeFilter.innerHTML = '<option value="">All lead types</option>';
+      for (const type of types) {
+        const option = document.createElement("option");
+        option.value = type;
+        option.textContent = type;
+        els.typeFilter.appendChild(option);
+      }
+      els.typeFilter.value = types.includes(current) ? current : "";
+    }
+
+    function updateStats(records) {
+      const scores = records.map((r) => Number(r.score || 0)).filter(Number.isFinite);
+      const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
+      els.totalLeads.textContent = String(records.length);
+      els.withAddress.textContent = String(records.filter((r) => r.prop_address || r.mail_address).length);
+      els.avgScore.textContent = String(avg);
+      els.hotLeads.textContent = String(records.filter((r) => Number(r.score || 0) >= 75).length);
+    }
+
+    function updateMeta(payload) {
+      const fetched = payload.fetched_at ? fmtDate(payload.fetched_at) : "Not fetched yet";
+      const range = payload.date_range || {};
+      const from = range.from ? fmtDate(range.from) : "";
+      const to = range.to ? fmtDate(range.to) : "";
+      const rangeText = from && to ? ` - ${from} to ${to}` : "";
+      els.meta.textContent = `${payload.source || "Public records"} - ${fetched}${rangeText}`;
+    }
+
+    function compareRecords(a, b) {
+      const sort = els.sortSelect.value;
+      if (sort === "filed") return safeText(b.filed).localeCompare(safeText(a.filed));
+      if (sort === "owner") return safeText(a.owner).localeCompare(safeText(b.owner));
+      if (sort === "type") return safeText(a.cat_label).localeCompare(safeText(b.cat_label));
+      return Number(b.score || 0) - Number(a.score || 0);
+    }
+
+    function applyFilters() {
+      const query = els.searchInput.value.trim().toLowerCase();
+      const type = els.typeFilter.value;
+      const minScore = Number(els.scoreFilter.value || 0);
+
+      state.filtered = state.records
+        .filter((record) => {
+          const haystack = [
+            record.owner,
+            record.grantee,
+            record.doc_num,
+            record.doc_type,
+            record.cat_label,
+            record.legal,
+            record.prop_address,
+            record.prop_city,
+            record.mail_address,
+            record.mail_city,
+            ...(record.flags || [])
+          ].map(safeText).join(" ").toLowerCase();
+          const typeValue = safeText(record.cat_label || record.cat);
+          return (!query || haystack.includes(query))
+            && (!type || typeValue === type)
+            && Number(record.score || 0) >= minScore;
+        })
+        .sort(compareRecords);
+
+      renderRows();
+    }
+
+    function renderRows() {
+      els.recordsBody.innerHTML = "";
+      els.emptyState.classList.toggle("hidden", state.filtered.length > 0);
+
+      for (const record of state.filtered) {
+        const tr = document.createElement("tr");
+        const score = Math.max(0, Math.min(100, Number(record.score || 0)));
+        const scoreClass = score >= 75 ? "hot" : "";
+        const prop = addressLine(record, "prop");
+        const mail = addressLine(record, "mail");
+        const flags = Array.isArray(record.flags) ? record.flags : [];
+
+        tr.innerHTML = `
+          <td>
+            <div class="score">
+              <span class="score-num ${scoreClass}">${score}</span>
+              <span class="score-bar"><span class="score-fill ${scoreClass}" style="width:${score}%"></span></span>
+            </div>
+          </td>
+          <td>
+            <div class="owner"></div>
+            <div class="subtle grantee"></div>
+          </td>
+          <td><div class="address prop-address"></div></td>
+          <td><div class="address mail-address"></div></td>
+          <td>
+            <div class="doc lead-type"></div>
+            <div class="subtle doc-type"></div>
+          </td>
+          <td class="filed"></td>
+          <td class="amount"></td>
+          <td><div class="flags"></div></td>
+          <td><a class="record-link" target="_blank" rel="noopener">Open</a></td>
+        `;
+
+        tr.querySelector(".owner").textContent = safeText(record.owner) || "Unknown";
+        tr.querySelector(".grantee").textContent = record.grantee ? `Grantee: ${record.grantee}` : "";
+        tr.querySelector(".prop-address").innerHTML = prop.map((line) => `<div>${escapeHtml(line)}</div>`).join("") || '<span class="subtle">No property address</span>';
+        tr.querySelector(".mail-address").innerHTML = mail.map((line) => `<div>${escapeHtml(line)}</div>`).join("") || '<span class="subtle">No mailing address</span>';
+        tr.querySelector(".lead-type").textContent = safeText(record.cat_label || record.cat);
+        tr.querySelector(".doc-type").textContent = [record.doc_type, record.doc_num].filter(Boolean).join(" - ");
+        tr.querySelector(".filed").textContent = fmtDate(record.filed);
+        tr.querySelector(".amount").textContent = fmtMoney(record.amount);
+
+        const flagsWrap = tr.querySelector(".flags");
+        if (flags.length) {
+          for (const flag of flags) {
+            const span = document.createElement("span");
+            span.className = flag === "New this week" ? "pill warn" : "pill";
+            span.textContent = flag;
+            flagsWrap.appendChild(span);
+          }
+        } else {
+          flagsWrap.innerHTML = '<span class="subtle">None</span>';
+        }
+
+        const link = tr.querySelector(".record-link");
+        link.href = record.clerk_url || "https://www.acgov.org/auditor/clerk/opr/";
+        els.recordsBody.appendChild(tr);
+      }
+    }
+
+    function escapeHtml(value) {
+      return safeText(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    async function loadRecords() {
+      els.meta.textContent = "Loading records...";
+      try {
+        const response = await fetch(`output.json?ts=${Date.now()}`, { cache: "no-store" }).catch(() => fetch(`../data/output.json?ts=${Date.now()}`, { cache: "no-store" })).catch(() => fetch(`records.json?ts=${Date.now()}`, { cache: "no-store" }));
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const payload = await response.json();
+        state.payload = payload;
+        state.records = Array.isArray(payload.records) ? payload.records : [];
+        setTypeOptions(state.records);
+        updateStats(state.records);
+        updateMeta(payload);
+        applyFilters();
+      } catch (error) {
+        state.records = [];
+        state.filtered = [];
+        updateStats([]);
+        els.recordsBody.innerHTML = "";
+        els.emptyState.classList.remove("hidden");
+        els.emptyState.textContent = "Could not load output.json.";
+        els.meta.textContent = "Records unavailable";
+        console.error(error);
+      }
+    }
+
+    for (const el of [els.searchInput, els.typeFilter, els.scoreFilter, els.sortSelect]) {
+      el.addEventListener("input", applyFilters);
+      el.addEventListener("change", applyFilters);
+    }
+
+    els.refreshBtn.addEventListener("click", loadRecords);
+    loadRecords();
+  </script>
+</body>
+</html>
+
