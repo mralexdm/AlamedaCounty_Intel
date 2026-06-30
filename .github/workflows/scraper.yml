@@ -1,0 +1,83 @@
+name: Alameda County Lead Scrape
+
+# Daily motivated-seller scrape for NextKey Home Offer.
+on:
+  schedule:
+    # 07:00 UTC daily (~11pm/12am Pacific). Adjust as desired.
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+    inputs:
+      demo:
+        description: "Run in demo mode (sample leads, no live portal)"
+        type: boolean
+        default: false
+
+# Allow the workflow to push updated outputs back to the repo.
+permissions:
+  contents: write
+
+concurrency:
+  group: lead-scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+
+    env:
+      LOOKBACK_DAYS: "7"
+      HEADLESS: "1"
+      # Optional overrides for the verified parcel layer / schema:
+      # ASSESSOR_PARCEL_ARCGIS_URL: ${{ vars.ASSESSOR_PARCEL_ARCGIS_URL }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r src/requirements.txt
+
+      - name: Install Playwright Chromium
+        run: |
+          python -m playwright install --with-deps chromium
+
+      - name: Run scraper
+        id: run
+        continue-on-error: true
+        run: |
+          if [ "${{ inputs.demo }}" = "true" ]; then
+            python src/scraper.py --demo
+          else
+            python src/scraper.py
+          fi
+
+      - name: Upload run logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scrape-logs
+          path: logs/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Commit updated outputs
+        if: always()
+        run: |
+          git config user.name "nextkey-scraper-bot"
+          git config user.email "actions@github.com"
+          git add data/output.json exports/ghl_export.csv
+          if git diff --cached --quiet; then
+            echo "No output changes to commit."
+          else
+            git commit -m "chore(scrape): update Alameda County leads ($(date -u +%Y-%m-%d))"
+            git push
+          fi
