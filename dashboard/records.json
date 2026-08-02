@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-08-01T09:07:52.140882+00:00",
+  "fetched_at": "2026-08-02T09:12:30.775057+00:00",
   "source": "Alameda County Clerk-Recorder Public Records",
   "date_range": {
-    "from": "2026-07-26",
-    "to": "2026-08-01",
+    "from": "2026-07-27",
+    "to": "2026-08-02",
     "lookback_days": 7
   },
   "total": 1113,
