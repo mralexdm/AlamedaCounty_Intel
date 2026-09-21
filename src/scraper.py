@@ -20,6 +20,12 @@ Environment variables:
     PROPERTY_BULK_DBF_URL      Direct .dbf or .zip URL to use first.
     ENABLE_ARCGIS_FALLBACK     Set to 0 to disable ArcGIS fallback. Default: 1.
     ARCGIS_MAX_RECORDS         Optional cap for fallback parcel records.
+    ENABLE_OWNER_HISTORY_ENRICHMENT
+                               Set to 0 to disable recorder-history APN lookup.
+                               Default: 1.
+    OWNER_HISTORY_MAX_SEARCHES Maximum unique owner searches per run. Default: 200.
+    OWNER_HISTORY_MAX_DEEDS    Maximum deed details checked per owner. Default: 8.
+    OWNER_HISTORY_DELAY_MS     Pause between owner searches. Default: 150.
     SCRAPER_TIMEOUT_MS         Playwright timeout. Default: 45000.
 """
 
@@ -394,6 +400,12 @@ CORP_OWNER_RE = re.compile(
 )
 AMOUNT_RE = re.compile(r"(?<!\w)\$?\s*([0-9]{1,3}(?:,[0-9]{3})*(?:\.\d{2})?|[0-9]+(?:\.\d{2})?)")
 APN_RE = re.compile(r"\b(?:APN|PARCEL|ASSESSOR(?:'S)? PARCEL(?: NUMBER)?)[^\dA-Z]{0,8}([0-9A-Z-]{5,})", re.I)
+OWNER_HISTORY_DEED_LABELS = (
+    "DEED",
+    "DEED - REVOCABLE TRANSFER ON DEATH DEED",
+    "TRUSTEES DEED",
+    "TRUSTEES DEED NO DA FEE",
+)
 
 
 @dataclasses.dataclass
@@ -515,6 +527,32 @@ def normalize_name(value: str) -> str:
 
 def normalize_apn(value: str) -> str:
     return re.sub(r"[^A-Z0-9]", "", clean_text(value).upper())
+
+
+def canonicalize_recorder_apn(value: str) -> str:
+    """Convert the recorder's zero-padded APN display to the parcel layer format."""
+
+    value = clean_text(value)
+    digits = re.sub(r"\D", "", value)
+    if len(digits) in {10, 12}:
+        parts = [digits[:3], digits[3:7], digits[7:10]]
+        if len(digits) == 12 and int(digits[10:12] or "0"):
+            parts.append(digits[10:12])
+        return "-".join(str(int(part or "0")) for part in parts)
+    return value
+
+
+def owner_history_search_terms(owner: str) -> list[str]:
+    """Return recorder-friendly owner names, most specific first."""
+
+    original = clean_text(re.sub(r"\([+-]\)", " ", owner))
+    stripped = re.sub(
+        r"(?:[\s,]+(?:TR|TRS|TEE|TRUSTEE|IND|ET\s+AL|EST|ESTATE))+$",
+        "",
+        original,
+        flags=re.I,
+    ).strip(" ,.-")
+    return list(dict.fromkeys(term for term in (stripped, original) if term))
 
 
 def owner_name_variants(owner: str) -> set[str]:
@@ -1414,6 +1452,231 @@ async def set_document_type(page: Any, doc_code: str) -> bool:
     return False
 
 
+async def set_exact_document_labels(page: Any, labels: Iterable[str]) -> bool:
+    """Select only exact recorder document labels (avoids DEED matching TRUST DEED)."""
+
+    wanted = [clean_text(label).upper() for label in labels if clean_text(label)]
+    try:
+        matched_ids = await page.evaluate(
+            r"""wanted => {
+                const norm = value => String(value || '').replace(/\s+/g, ' ').trim().toUpperCase();
+                const wantedSet = new Set(wanted.map(norm));
+                const matched = [];
+                for (const input of document.querySelectorAll("input[type='checkbox']")) {
+                    if (input.checked) input.click();
+                }
+                for (const label of document.querySelectorAll('label')) {
+                    const id = label.getAttribute('for');
+                    const input = id ? document.getElementById(id) : label.querySelector("input[type='checkbox']");
+                    if (!input || input.type !== 'checkbox' || !wantedSet.has(norm(label.textContent))) continue;
+                    matched.push(input.id);
+                }
+                return matched;
+            }""",
+            wanted,
+        )
+    except Exception as exc:
+        logging.debug("Could not select owner-history deed labels: %s", exc)
+        return False
+
+    for checkbox_id in matched_ids:
+        try:
+            await page.locator(f"#{checkbox_id}").check(force=True, timeout=3000)
+        except Exception:
+            try:
+                await page.evaluate("id => document.getElementById(id)?.click()", checkbox_id)
+            except Exception:
+                continue
+    return bool(matched_ids)
+
+
+async def fill_owner_history_name(page: Any, owner: str) -> bool:
+    party = page.locator("#cphNoMargin_f_txtGrantor")
+    if await party.count() == 0:
+        return False
+    try:
+        await party.click(timeout=3000)
+        await party.press("Control+A")
+        await party.press_sequentially(owner, delay=15)
+    except Exception:
+        try:
+            await party.fill(owner)
+        except Exception:
+            return False
+
+    try:
+        await page.locator("#cphNoMargin_f_drbPartyType_2").check(force=True, timeout=3000)
+    except Exception:
+        try:
+            await page.evaluate(
+                """() => {
+                    const radio = document.querySelector('#cphNoMargin_f_drbPartyType_2');
+                    if (radio && !radio.checked) radio.click();
+                }"""
+            )
+        except Exception:
+            return False
+    return clean_text(await party.input_value()) == clean_text(owner)
+
+
+async def extract_detail_apns(page: Any) -> list[str]:
+    legal_tab = page.locator("span.igtab_ElectricBlueTHTab").filter(has_text="Legal Description").first
+    if await legal_tab.count() == 0:
+        legal_tab = page.get_by_text("Legal Description", exact=True).first
+    if await legal_tab.count() > 0:
+        try:
+            await legal_tab.click(force=True, timeout=5000)
+            await page.wait_for_timeout(350)
+        except Exception:
+            pass
+
+    values: list[str] = []
+    try:
+        values = await page.locator("[aria-label]").evaluate_all(
+            r"""nodes => nodes
+                .filter(node => /^\s*(APN|ASSESSOR.*PARCEL)/i.test(node.getAttribute('aria-label') || ''))
+                .map(node => String(node.textContent || '').trim())
+                .filter(Boolean)"""
+        )
+    except Exception:
+        pass
+
+    if not values:
+        try:
+            body = clean_text(await page.text_content("body") or "")
+            values = re.findall(
+                r"\bAPN\s*:?\s*([0-9]{1,3}(?:[ -]+[0-9]{1,4}){2,3})\b",
+                body,
+                flags=re.I,
+            )
+        except Exception:
+            pass
+
+    out: list[str] = []
+    for value in values:
+        canonical = canonicalize_recorder_apn(value)
+        if canonical and normalize_apn(canonical):
+            out.append(canonical)
+    return list(dict.fromkeys(out))
+
+
+async def owner_deed_apns(page: Any, owner: str, max_deeds: int) -> list[str]:
+    """Find APNs on the newest permanent deed(s) where owner was the grantee."""
+
+    for search_name in owner_history_search_terms(owner):
+        await open_search_surface(page)
+        if not await fill_owner_history_name(page, search_name):
+            continue
+        if not await set_exact_document_labels(page, OWNER_HISTORY_DEED_LABELS):
+            logging.warning("Owner-history enrichment skipped; Alameda deed labels were not found")
+            return []
+        await submit_search(page)
+
+        detail_cells = page.locator("td.fauxDetailLink")
+        count = await detail_cells.count()
+        if count == 0:
+            continue
+
+        candidates: list[tuple[int, dt.date | None]] = []
+        for index in range(count):
+            try:
+                row_text = clean_text(await detail_cells.nth(index).locator("xpath=ancestor::tr[1]").inner_text())
+            except Exception:
+                row_text = ""
+            if row_text and not re.search(r"\bPerm\b", row_text, re.I):
+                continue
+            date_match = re.search(r"\b\d{1,2}/\d{1,2}/\d{2,4}\b", row_text)
+            candidates.append((index, parse_date(date_match.group(0)) if date_match else None))
+
+        if not candidates:
+            continue
+        dated = [filed for _, filed in candidates if filed]
+        if dated:
+            newest = max(dated)
+            candidates = [item for item in candidates if item[1] == newest]
+        candidates = candidates[: max(1, max_deeds)]
+
+        found: list[str] = []
+        results_url = str(page.url)
+        for index, _ in candidates:
+            try:
+                await page.locator("td.fauxDetailLink").nth(index).click(force=True, timeout=5000)
+                try:
+                    await page.wait_for_load_state("networkidle", timeout=10000)
+                except Exception:
+                    await page.wait_for_timeout(500)
+                found.extend(await extract_detail_apns(page))
+            except Exception as exc:
+                logging.debug("Could not inspect deed detail for %s: %s", search_name, exc)
+            finally:
+                try:
+                    back = page.get_by_text("Back to Results", exact=False).first
+                    if await back.count() > 0:
+                        await back.click(force=True, timeout=5000)
+                        await page.wait_for_load_state("domcontentloaded", timeout=10000)
+                    elif str(page.url) != results_url:
+                        await page.goto(results_url, wait_until="domcontentloaded", timeout=10000)
+                except Exception:
+                    try:
+                        await page.goto(results_url, wait_until="domcontentloaded", timeout=10000)
+                    except Exception:
+                        break
+
+        unique = list(dict.fromkeys(found))
+        if unique:
+            return unique
+    return []
+
+
+async def enrich_clerk_records_with_owner_history(page: Any, records: list[ClerkRecord]) -> None:
+    """Add a verified recorder APN to records so the parcel index can supply addresses."""
+
+    if os.getenv("ENABLE_OWNER_HISTORY_ENRICHMENT", "1") == "0":
+        return
+    max_searches = max(0, int(os.getenv("OWNER_HISTORY_MAX_SEARCHES", "200")))
+    max_deeds = max(1, int(os.getenv("OWNER_HISTORY_MAX_DEEDS", "8")))
+    delay_ms = max(0, int(os.getenv("OWNER_HISTORY_DELAY_MS", "150")))
+
+    records_by_owner: dict[str, list[ClerkRecord]] = defaultdict(list)
+    for record in records:
+        if record.owner and not extract_apns(record.legal):
+            records_by_owner[normalize_name(record.owner)].append(record)
+
+    matched = 0
+    ambiguous = 0
+    searched = 0
+    for owner_records in records_by_owner.values():
+        if max_searches and searched >= max_searches:
+            break
+        owner = owner_records[0].owner
+        searched += 1
+        try:
+            apns = await owner_deed_apns(page, owner, max_deeds)
+        except Exception as exc:
+            logging.debug("Owner-history lookup failed for %s: %s", owner, exc)
+            apns = []
+
+        if len(apns) == 1:
+            matched += 1
+            for record in owner_records:
+                record.legal = clean_text(f"{record.legal} APN: {apns[0]}")
+                record.raw["OWNER_HISTORY_APN"] = apns[0]
+        elif len(apns) > 1:
+            ambiguous += 1
+            logging.info("Owner-history lookup left %s blank (%s current parcels)", owner, len(apns))
+
+        if delay_ms:
+            await page.wait_for_timeout(delay_ms)
+
+    logging.info(
+        "Owner-history enrichment searched=%s matched=%s ambiguous=%s limit=%s",
+        searched,
+        matched,
+        ambiguous,
+        max_searches or "none",
+    )
+
+
 async def submit_search(page: Any) -> None:
     selectors = [
         "#cphNoMargin_SearchButtons1_btnSearch",
@@ -1584,10 +1847,16 @@ async def fetch_clerk_records_with_playwright(start_date: dt.date, end_date: dt.
             except Exception as exc:  # noqa: BLE001
                 logging.warning("Clerk search failed for %s: %s", doc_code, exc)
 
+        all_records = dedupe_clerk_records(all_records)
+        try:
+            await enrich_clerk_records_with_owner_history(page, all_records)
+        except Exception as exc:  # noqa: BLE001
+            logging.warning("Owner-history address enrichment failed: %s", exc)
+
         await context.close()
         await browser.close()
 
-    return dedupe_clerk_records(all_records)
+    return all_records
 
 
 def parse_headers(cells: list[Any]) -> list[str]:
