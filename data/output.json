@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-09-26T07:31:06.023968+00:00",
+  "fetched_at": "2026-09-27T07:31:40.037901+00:00",
   "source": "Alameda County Clerk-Recorder Public Records",
   "date_range": {
-    "from": "2026-09-20",
-    "to": "2026-09-26",
+    "from": "2026-09-21",
+    "to": "2026-09-27",
     "lookback_days": 7
   },
   "total": 966,
-  "with_address": 104,
+  "with_address": 103,
   "records": [
     {
       "doc_num": "2026120368",
@@ -834,32 +834,6 @@
       "mail_state": "CA",
       "mail_zip": "94501",
       "clerk_url": "https://rechart1.acgov.org/RealEstate/SearchResults.aspx?pg=4",
-      "flags": [
-        "Pre-foreclosure",
-        "LLC / corp owner",
-        "New this week"
-      ],
-      "score": 70
-    },
-    {
-      "doc_num": "2026120125",
-      "doc_type": "SUBSTITUTION OF TRUSTEE",
-      "filed": "2026-09-22",
-      "cat": "NOFC",
-      "cat_label": "Notice of Foreclosure",
-      "owner": "XIE TING (+)",
-      "grantee": "DOVENMUEHLE MORTGAGE INC",
-      "amount": "",
-      "legal": "APN: 519-1193-71",
-      "prop_address": "47643 GRIDLEY CT FREMONT 94539",
-      "prop_city": "FREMONT",
-      "prop_state": "CA",
-      "prop_zip": "94539",
-      "mail_address": "47643 GRIDLEY CT",
-      "mail_city": "FREMONT",
-      "mail_state": "CA",
-      "mail_zip": "94539",
-      "clerk_url": "https://rechart1.acgov.org/RealEstate/SearchResults.aspx?pg=5",
       "flags": [
         "Pre-foreclosure",
         "LLC / corp owner",
@@ -6284,7 +6258,7 @@
       "owner": "C T NORCAL REAL ESTATE LLC",
       "grantee": "U S SMALL BUSINESS ADMINISTRATION",
       "amount": "",
-      "legal": "",
+      "legal": "APN: 444-36-26",
       "prop_address": "",
       "prop_city": "",
       "prop_state": "CA",
@@ -7620,6 +7594,32 @@
       "mail_state": "CA",
       "mail_zip": "",
       "clerk_url": "https://rechart1.acgov.org/RealEstate/SearchResults.aspx?pg=4",
+      "flags": [
+        "Pre-foreclosure",
+        "LLC / corp owner",
+        "New this week"
+      ],
+      "score": 65
+    },
+    {
+      "doc_num": "2026120125",
+      "doc_type": "SUBSTITUTION OF TRUSTEE",
+      "filed": "2026-09-22",
+      "cat": "NOFC",
+      "cat_label": "Notice of Foreclosure",
+      "owner": "XIE TING (+)",
+      "grantee": "DOVENMUEHLE MORTGAGE INC",
+      "amount": "",
+      "legal": "",
+      "prop_address": "",
+      "prop_city": "",
+      "prop_state": "CA",
+      "prop_zip": "",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "CA",
+      "mail_zip": "",
+      "clerk_url": "https://rechart1.acgov.org/RealEstate/SearchResults.aspx?pg=5",
       "flags": [
         "Pre-foreclosure",
         "LLC / corp owner",
