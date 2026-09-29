@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alameda Cash Buyers</title>
+  <style>
+    :root {
+      --bg: #f6f7f2;
+      --panel: #ffffff;
+      --ink: #202124;
+      --muted: #666b73;
+      --line: #d9ddd2;
+      --accent: #1f6f63;
+      --accent-2: #b84a32;
+      --accent-3: #375a7f;
+      --soft: #edf4f2;
+      --warn: #fff3df;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    a {
+      color: var(--accent-3);
+    }
+
+    .shell {
+      width: min(1480px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 22px 0 36px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .meta {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 36px;
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .button:hover {
+      border-color: #b9c3bc;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .notice {
+      background: var(--warn);
+      border: 1px solid #efd9b4;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      color: #6b4a12;
+      font-size: 13px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(140px, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: var(--shadow);
+      min-height: 78px;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .stat .value {
+      margin-top: 4px;
+      font-size: 24px;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: minmax(220px, 2fr) minmax(160px, 1fr) minmax(130px, 0.7fr) minmax(160px, 1fr) minmax(150px, 1fr);
+      gap: 10px;
+      align-items: end;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: var(--shadow);
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: grid;
+      gap: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      padding: 8px 10px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(31, 111, 99, 0.12);
+    }
+
+    .table-wrap {
+      overflow: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      min-width: 1080px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px 11px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #f9faf7;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    tbody tr:hover {
+      background: #fbfcf8;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .count {
+      display: inline-grid;
+      place-items: center;
+      min-width: 36px;
+      height: 32px;
+      padding: 0 8px;
+      border-radius: 6px;
+      background: var(--soft);
+      color: var(--accent);
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .count.hot {
+      background: #f9e6e0;
+      color: var(--accent-2);
+    }
+
+    .name {
+      font-weight: 700;
+      max-width: 260px;
+      overflow-wrap: anywhere;
+    }
+
+    .subtle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .address {
+      max-width: 240px;
+      overflow-wrap: anywhere;
+    }
+
+    .props {
+      max-width: 360px;
+      font-size: 13px;
+    }
+
+    .props div + div {
+      margin-top: 3px;
+    }
+
+    .flags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      max-width: 260px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: #235a51;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .pill.warn {
+      background: var(--warn);
+      color: #82510c;
+    }
+
+    .empty {
+      padding: 34px 18px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      .shell {
+        width: min(100% - 20px, 1480px);
+        padding-top: 14px;
+      }
+
+      .topbar,
+      .filters {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        justify-content: flex-start;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(130px, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar" aria-label="Dashboard header">
+      <div>
+        <h1>Alameda Cash Buyers</h1>
+        <div class="meta" id="meta">Loading buyers...</div>
+      </div>
+      <div class="actions">
+        <a class="button" href="index.html" title="Seller leads">Seller Leads</a>
+        <button class="button" type="button" id="refreshBtn" title="Reload buyers">
+          <span aria-hidden="true">&#8635;</span>
+          Refresh
+        </button>
+        <a class="button primary" href="buyers_ghl.csv" title="Download buyer CSV">
+          <span aria-hidden="true">&#8595;</span>
+          Buyers CSV
+        </a>
+      </div>
+    </section>
+
+    <div class="notice hidden" id="coverageNotice"></div>
+
+    <section class="stats" aria-label="Buyer totals">
+      <div class="stat">
+        <div class="label">Investor Buyers</div>
+        <div class="value" id="totalBuyers">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">With Mailing Address</div>
+        <div class="value" id="withAddress">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Repeat Buyers (2+)</div>
+        <div class="value" id="repeatBuyers">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Auction Buyers</div>
+        <div class="value" id="auctionBuyers">0</div>
+      </div>
+    </section>
+
+    <section class="filters" aria-label="Buyer filters">
+      <label>
+        Search
+        <input id="searchInput" type="search" placeholder="Buyer, address, city">
+      </label>
+      <label>
+        City Bought In
+        <select id="cityFilter">
+          <option value="">All cities</option>
+        </select>
+      </label>
+      <label>
+        Min Purchases
+        <input id="minPurchases" type="number" min="1" step="1" value="1">
+      </label>
+      <label>
+        Address
+        <select id="addressFilter">
+          <option value="">Any</option>
+          <option value="Verified">Has mailing address</option>
+          <option value="Pending county update">Pending county update</option>
+          <option value="Not on county roll (resold)">Resold - look up LLC</option>
+        </select>
+      </label>
+      <label>
+        Buyer Type
+        <select id="typeFilter">
+          <option value="Investor">Investors only</option>
+          <option value="">Include institutional</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="table-wrap" aria-label="Buyer table">
+      <table>
+        <thead>
+          <tr>
+            <th>Buys</th>
+            <th>Buyer</th>
+            <th>Mailing Address</th>
+            <th>Last Purchase</th>
+            <th>Recent Purchases</th>
+            <th>Cities</th>
+            <th>Tags</th>
+          </tr>
+        </thead>
+        <tbody id="buyersBody"></tbody>
+      </table>
+      <div class="empty hidden" id="emptyState">No buyers match the current filters.</div>
+    </section>
+  </main>
+
+  <script>
+    const state = { payload: null, buyers: [], filtered: [] };
+
+    const els = {
+      meta: document.getElementById("meta"),
+      coverageNotice: document.getElementById("coverageNotice"),
+      totalBuyers: document.getElementById("totalBuyers"),
+      withAddress: document.getElementById("withAddress"),
+      repeatBuyers: document.getElementById("repeatBuyers"),
+      auctionBuyers: document.getElementById("auctionBuyers"),
+      searchInput: document.getElementById("searchInput"),
+      cityFilter: document.getElementById("cityFilter"),
+      minPurchases: document.getElementById("minPurchases"),
+      addressFilter: document.getElementById("addressFilter"),
+      typeFilter: document.getElementById("typeFilter"),
+      buyersBody: document.getElementById("buyersBody"),
+      emptyState: document.getElementById("emptyState"),
+      refreshBtn: document.getElementById("refreshBtn")
+    };
+
+    function safeText(value) {
+      return value === null || value === undefined ? "" : String(value);
+    }
+
+    function escapeHtml(value) {
+      return safeText(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function fmtDate(value) {
+      if (!value) return "";
+      const parsed = new Date(`${String(value).slice(0, 10)}T12:00:00`);
+      if (Number.isNaN(parsed.getTime())) return value;
+      return parsed.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+    }
+
+    function setCityOptions(buyers) {
+      const current = els.cityFilter.value;
+      const cities = [...new Set(buyers.flatMap((b) => b.cities || []))].sort();
+      els.cityFilter.innerHTML = '<option value="">All cities</option>';
+      for (const city of cities) {
+        const option = document.createElement("option");
+        option.value = city;
+        option.textContent = city;
+        els.cityFilter.appendChild(option);
+      }
+      els.cityFilter.value = cities.includes(current) ? current : "";
+    }
+
+    function updateStats(buyers) {
+      els.totalBuyers.textContent = String(buyers.length);
+      els.withAddress.textContent = String(buyers.filter((b) => b.address_status === "Verified").length);
+      els.repeatBuyers.textContent = String(buyers.filter((b) => Number(b.purchases || 0) >= 2).length);
+      els.auctionBuyers.textContent = String(buyers.filter((b) => Number(b.auction_purchases || 0) > 0).length);
+    }
+
+    function updateMeta(payload) {
+      const range = payload.date_range || {};
+      const cov = payload.coverage || {};
+      const fetched = payload.fetched_at ? fmtDate(payload.fetched_at) : "Not fetched yet";
+      els.meta.textContent = `Deeds recorded ${fmtDate(range.from)} to ${fmtDate(range.to)} - updated ${fetched}`;
+      const scanned = Number(cov.days_scanned || 0);
+      const total = Number(cov.days_in_window || 0);
+      const notes = [];
+      if (total && scanned < total) {
+        notes.push(`History is still filling in: ${scanned} of ${total} days of deeds scanned so far. Each nightly run adds more.`);
+      }
+      if (payload.parcel_layer_through) {
+        notes.push(`The county parcel roll has buyer mailing addresses for deeds through ${fmtDate(payload.parcel_layer_through)}; newer buyers show "pending" until it updates.`);
+      }
+      els.coverageNotice.textContent = notes.join(" ");
+      els.coverageNotice.classList.toggle("hidden", notes.length === 0);
+    }
+
+    function applyFilters() {
+      const query = els.searchInput.value.trim().toLowerCase();
+      const city = els.cityFilter.value;
+      const minPurchases = Number(els.minPurchases.value || 1);
+      const address = els.addressFilter.value;
+      const type = els.typeFilter.value;
+
+      state.filtered = state.buyers.filter((buyer) => {
+        const haystack = [
+          buyer.name,
+          buyer.mail_address,
+          buyer.mail_city,
+          ...(buyer.cities || []),
+          ...(buyer.tags || []),
+          ...(buyer.properties || []).map((p) => `${p.address} ${p.city}`)
+        ].map(safeText).join(" ").toLowerCase();
+        return (!query || haystack.includes(query))
+          && (!city || (buyer.cities || []).includes(city))
+          && Number(buyer.purchases || 0) >= minPurchases
+          && (!address || buyer.address_status === address)
+          && (!type || buyer.buyer_type === type);
+      });
+      renderRows();
+    }
+
+    function renderRows() {
+      els.buyersBody.innerHTML = "";
+      els.emptyState.classList.toggle("hidden", state.filtered.length > 0);
+
+      for (const buyer of state.filtered) {
+        const tr = document.createElement("tr");
+        const purchases = Number(buyer.purchases || 0);
+        const mail = [
+          buyer.mail_address,
+          [buyer.mail_city, buyer.mail_state, buyer.mail_zip].filter(Boolean).join(" ")
+        ].filter(Boolean);
+        const props = (buyer.properties || []).slice(0, 4).map((p) => {
+          const where = [p.address, p.city].filter(Boolean).join(", ") || `Doc ${p.doc_num}`;
+          const kind = p.auction ? " (auction)" : "";
+          return `<div>${escapeHtml(where)}<span class="subtle"> - ${escapeHtml(fmtDate(p.filed))}${kind}</span></div>`;
+        });
+        if ((buyer.properties || []).length > 4) {
+          props.push(`<div class="subtle">+${buyer.properties.length - 4} more</div>`);
+        }
+
+        tr.innerHTML = `
+          <td><span class="count ${purchases >= 3 ? "hot" : ""}">${purchases}</span></td>
+          <td>
+            <div class="name">${escapeHtml(buyer.name)}</div>
+            <div class="subtle">${escapeHtml(buyer.buyer_type)}${buyer.sales ? ` - sold ${buyer.sales}` : ""}</div>
+          </td>
+          <td><div class="address">${mail.map((line) => `<div>${escapeHtml(line)}</div>`).join("") || `<span class="subtle">${escapeHtml(buyer.address_status)}</span>`}</div></td>
+          <td>${escapeHtml(fmtDate(buyer.last_purchase))}</td>
+          <td><div class="props">${props.join("")}</div></td>
+          <td class="subtle">${escapeHtml((buyer.cities || []).join(", "))}</td>
+          <td><div class="flags"></div></td>
+        `;
+        const flags = tr.querySelector(".flags");
+        for (const tag of buyer.tags || []) {
+          const span = document.createElement("span");
+          span.className = tag === "Institutional / builder" ? "pill warn" : "pill";
+          span.textContent = tag;
+          flags.appendChild(span);
+        }
+        els.buyersBody.appendChild(tr);
+      }
+    }
+
+    async function loadBuyers() {
+      els.meta.textContent = "Loading buyers...";
+      try {
+        const response = await fetch(`buyers.json?ts=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const payload = await response.json();
+        state.payload = payload;
+        state.buyers = Array.isArray(payload.buyers) ? payload.buyers : [];
+        setCityOptions(state.buyers);
+        updateStats(state.buyers.filter((b) => b.buyer_type === "Investor"));
+        updateMeta(payload);
+        applyFilters();
+      } catch (error) {
+        state.buyers = [];
+        state.filtered = [];
+        els.buyersBody.innerHTML = "";
+        els.emptyState.classList.remove("hidden");
+        els.emptyState.textContent = "Buyer list has not been generated yet. It appears after the next scraper run.";
+        els.meta.textContent = "Buyers unavailable";
+        console.error(error);
+      }
+    }
+
+    for (const el of [els.searchInput, els.cityFilter, els.minPurchases, els.addressFilter, els.typeFilter]) {
+      el.addEventListener("input", applyFilters);
+      el.addEventListener("change", applyFilters);
+    }
+    els.refreshBtn.addEventListener("click", loadBuyers);
+    loadBuyers();
+  </script>
+</body>
+</html>

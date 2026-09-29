@@ -9,6 +9,10 @@ on:
         description: "Days to look back"
         required: false
         default: "7"
+      buyer_max_minutes:
+        description: "Minutes the buyer scraper may spend backfilling older deeds"
+        required: false
+        default: "45"
   push:
     branches:
       - main
@@ -50,6 +54,12 @@ jobs:
           LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '7' }}
         run: python src/scraper.py
 
+      - name: Run buyer scraper
+        continue-on-error: true
+        env:
+          BUYER_MAX_MINUTES: ${{ github.event.inputs.buyer_max_minutes || '45' }}
+        run: python src/buyers.py
+
       - name: Prepare dashboard artifact
         run: |
           cp data/output.json dashboard/output.json
@@ -61,6 +71,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/output.json dashboard/output.json data/records.json dashboard/records.json
           git add dashboard/ghl_export.csv data/ghl_export.csv dashboard/leads_ghl.csv data/leads_ghl.csv
+          for f in data/buyer_deeds.json data/buyers.json dashboard/buyers.json data/buyers_ghl.csv dashboard/buyers_ghl.csv; do
+            if [ -f "$f" ]; then git add "$f"; fi
+          done
           if git diff --cached --quiet; then
             echo "No record changes to commit."
           else
