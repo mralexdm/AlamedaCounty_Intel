@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-10-03T07:37:45.739751+00:00",
+  "fetched_at": "2026-10-04T09:26:11.845536+00:00",
   "source": "Alameda County Clerk-Recorder Public Records",
   "date_range": {
-    "from": "2026-09-27",
-    "to": "2026-10-03",
+    "from": "2026-09-28",
+    "to": "2026-10-04",
     "lookback_days": 7
   },
   "total": 969,
-  "with_address": 84,
+  "with_address": 85,
   "records": [
     {
       "doc_num": "2026123605",
@@ -9274,7 +9274,7 @@
       "owner": "LIAO HAO HSIANG (+)",
       "grantee": "NATIONWIDE TITLE CLEARING LLC",
       "amount": "",
-      "legal": "",
+      "legal": "APN: 525 1272 35",
       "prop_address": "",
       "prop_city": "",
       "prop_state": "CA",
@@ -12267,6 +12267,31 @@
       "mail_city": "LIVERMORE",
       "mail_state": "CA",
       "mail_zip": "94550",
+      "clerk_url": "https://rechart1.acgov.org/RealEstate/SearchResults.aspx?pg=2",
+      "flags": [
+        "Pre-foreclosure",
+        "New this week"
+      ],
+      "score": 60
+    },
+    {
+      "doc_num": "2026122510",
+      "doc_type": "SUBSTITUTION OF TRUSTEE",
+      "filed": "2026-09-28",
+      "cat": "NOFC",
+      "cat_label": "Notice of Foreclosure",
+      "owner": "THARP WILLIAM (+)",
+      "grantee": "REDWOOD CREDIT UNION",
+      "amount": "",
+      "legal": "APN: 36-2423-4",
+      "prop_address": "4411 BROOKDALE AVE OAKLAND 94619",
+      "prop_city": "OAKLAND",
+      "prop_state": "CA",
+      "prop_zip": "94619",
+      "mail_address": "4411 BROOKDALE AVE",
+      "mail_city": "OAKLAND",
+      "mail_state": "CA",
+      "mail_zip": "94619",
       "clerk_url": "https://rechart1.acgov.org/RealEstate/SearchResults.aspx?pg=2",
       "flags": [
         "Pre-foreclosure",
@@ -22584,31 +22609,6 @@
       "grantee": "WELLS FARGO BANK N A",
       "amount": "",
       "legal": "APN: 501 1814 91",
-      "prop_address": "",
-      "prop_city": "",
-      "prop_state": "CA",
-      "prop_zip": "",
-      "mail_address": "",
-      "mail_city": "",
-      "mail_state": "CA",
-      "mail_zip": "",
-      "clerk_url": "https://rechart1.acgov.org/RealEstate/SearchResults.aspx?pg=2",
-      "flags": [
-        "Pre-foreclosure",
-        "New this week"
-      ],
-      "score": 55
-    },
-    {
-      "doc_num": "2026122510",
-      "doc_type": "SUBSTITUTION OF TRUSTEE",
-      "filed": "2026-09-28",
-      "cat": "NOFC",
-      "cat_label": "Notice of Foreclosure",
-      "owner": "THARP WILLIAM (+)",
-      "grantee": "REDWOOD CREDIT UNION",
-      "amount": "",
-      "legal": "",
       "prop_address": "",
       "prop_city": "",
       "prop_state": "CA",
