@@ -1,24 +1,24 @@
 {
-  "fetched_at": "2026-10-07T07:44:23.510562+00:00",
+  "fetched_at": "2026-10-08T07:43:26.273584+00:00",
   "source": "Alameda County Clerk-Recorder deeds + Assessor parcel roll",
   "date_range": {
-    "from": "2025-10-08",
-    "to": "2026-10-07",
+    "from": "2025-10-09",
+    "to": "2026-10-08",
     "lookback_days": 365
   },
   "coverage": {
     "days_in_window": 365,
     "days_scanned": 354,
-    "oldest_scanned": "2025-10-08",
-    "newest_scanned": "2026-10-07"
+    "oldest_scanned": "2025-10-09",
+    "newest_scanned": "2026-10-08"
   },
   "parcel_layer_through": "2026-09-02",
-  "total": 1487,
-  "with_address": 906,
-  "repeat_buyers": 224,
+  "total": 1485,
+  "with_address": 903,
+  "repeat_buyers": 225,
   "skipped": {
-    "not_target": 1865,
-    "self_transfer": 343
+    "not_target": 1861,
+    "self_transfer": 346
   },
   "buyers": [
     {
@@ -266,7 +266,7 @@
       "address_status": "Verified",
       "purchases": 15,
       "auction_purchases": 0,
-      "sales": 154,
+      "sales": 155,
       "last_purchase": "2026-07-31",
       "first_purchase": "2025-10-21",
       "cities": [
@@ -497,11 +497,11 @@
       "mail_state": "CA",
       "mail_zip": "94583",
       "address_status": "Verified",
-      "purchases": 13,
+      "purchases": 12,
       "auction_purchases": 0,
       "sales": 31,
       "last_purchase": "2026-08-10",
-      "first_purchase": "2025-10-08",
+      "first_purchase": "2025-11-10",
       "cities": [
         "ALAMEDA"
       ],
@@ -676,20 +676,6 @@
           "city": "",
           "zip": "",
           "use": "",
-          "resold": false
-        },
-        {
-          "doc_num": "2025125873",
-          "filed": "2025-10-08",
-          "doc_type": "DEED",
-          "seller": "MRP HNHB LLC",
-          "auction": false,
-          "parcels": 2,
-          "apn": "71-292-48",
-          "address": "2001 CLEMENT AVE",
-          "city": "ALAMEDA",
-          "zip": "94501",
-          "use": "Multi-unit residential",
           "resold": false
         }
       ]
@@ -3954,7 +3940,7 @@
       "address_status": "Verified",
       "purchases": 5,
       "auction_purchases": 0,
-      "sales": 4,
+      "sales": 3,
       "last_purchase": "2026-09-02",
       "first_purchase": "2026-03-02",
       "cities": [
@@ -12480,6 +12466,54 @@
       ]
     },
     {
+      "name": "TH VINEYARD LLC",
+      "buyer_type": "Investor",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
+      "purchases": 2,
+      "auction_purchases": 0,
+      "sales": 0,
+      "last_purchase": "2026-10-07",
+      "first_purchase": "2026-07-09",
+      "cities": [],
+      "tags": [
+        "Repeat buyer"
+      ],
+      "properties": [
+        {
+          "doc_num": "2026127498",
+          "filed": "2026-10-07",
+          "doc_type": "DEED",
+          "seller": "KL LB PROPCO IV C LLC",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        },
+        {
+          "doc_num": "2026089099",
+          "filed": "2026-07-09",
+          "doc_type": "DEED",
+          "seller": "KL LB PROPCO IV C LLC",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        }
+      ]
+    },
+    {
       "name": "NEGOCIO PRO LLC",
       "buyer_type": "Investor",
       "mail_address": "",
@@ -19171,13 +19205,15 @@
       "address_status": "Verified",
       "purchases": 1,
       "auction_purchases": 0,
-      "sales": 0,
+      "sales": 1,
       "last_purchase": "2026-05-14",
       "first_purchase": "2026-05-14",
       "cities": [
         "DUBLIN"
       ],
-      "tags": [],
+      "tags": [
+        "Flipper (resold a property)"
+      ],
       "properties": [
         {
           "doc_num": "2026063984",
@@ -39951,103 +39987,101 @@
       ]
     },
     {
-      "name": "TAYCON PROPERTIES FOUR LLC",
+      "name": "RJHS LYFSTEN LLC",
       "buyer_type": "Investor",
-      "mail_address": "40 HAWTHORNE AVE",
-      "mail_city": "LOS ALTOS",
-      "mail_state": "CA",
-      "mail_zip": "94022",
-      "address_status": "Verified",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 0,
       "sales": 0,
-      "last_purchase": "2025-10-08",
-      "first_purchase": "2025-10-08",
+      "last_purchase": "2026-10-07",
+      "first_purchase": "2026-10-07",
       "cities": [
-        "BERKELEY"
+        "PIEDMONT"
       ],
       "tags": [],
       "properties": [
         {
-          "doc_num": "2025125805",
-          "filed": "2025-10-08",
+          "doc_num": "2026127200",
+          "filed": "2026-10-07",
           "doc_type": "DEED",
-          "seller": "FARELLA FAMILY TRUST",
+          "seller": "ROOS MICHELLE L TR",
           "auction": false,
           "parcels": 1,
-          "apn": "56-1930-23",
-          "address": "1201 DWIGHT WAY",
-          "city": "BERKELEY",
-          "zip": "94702",
-          "use": "Multi-unit residential",
+          "apn": "51-4790-16-2",
+          "address": "140 INDIAN RD",
+          "city": "PIEDMONT",
+          "zip": "94610",
+          "use": "Single family",
           "resold": false
         }
       ]
     },
     {
-      "name": "REGENCY BERKELEY LLC",
+      "name": "EPT PORTICO LLC",
       "buyer_type": "Investor",
-      "mail_address": "1111 FRANKLIN ST 6TH",
-      "mail_city": "OAKLAND",
-      "mail_state": "CA",
-      "mail_zip": "94607",
-      "address_status": "Verified",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 0,
       "sales": 0,
-      "last_purchase": "2025-10-08",
-      "first_purchase": "2025-10-08",
+      "last_purchase": "2026-10-07",
+      "first_purchase": "2026-10-07",
+      "cities": [],
+      "tags": [],
+      "properties": [
+        {
+          "doc_num": "2026127320",
+          "filed": "2026-10-07",
+          "doc_type": "DEED",
+          "seller": "CV OW PARCEL J OWNER LLC",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        }
+      ]
+    },
+    {
+      "name": "ALISHA & ARYAN REALTY CALIFORNIA LLC",
+      "buyer_type": "Investor",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
+      "purchases": 1,
+      "auction_purchases": 0,
+      "sales": 0,
+      "last_purchase": "2026-10-07",
+      "first_purchase": "2026-10-07",
       "cities": [
-        "BERKELEY"
+        "UNION CITY"
       ],
       "tags": [],
       "properties": [
         {
-          "doc_num": "2025125879",
-          "filed": "2025-10-08",
+          "doc_num": "2026127505",
+          "filed": "2026-10-07",
           "doc_type": "DEED",
-          "seller": "BERKELEY DOWNTOWN HOTEL OWNER LLC",
+          "seller": "BCB FALLON PROPERTIES LLC",
           "auction": false,
           "parcels": 1,
-          "apn": "57-2032-21",
-          "address": "2121 CENTER ST",
-          "city": "BERKELEY",
-          "zip": "94704",
+          "apn": "87-23-11",
+          "address": "34015 7TH ST",
+          "city": "UNION CITY",
+          "zip": "94587",
           "use": "Commercial / other",
-          "resold": false
-        }
-      ]
-    },
-    {
-      "name": "2919 FULTON LLC",
-      "buyer_type": "Investor",
-      "mail_address": "3042 DOHR ST",
-      "mail_city": "BERKELEY",
-      "mail_state": "CA",
-      "mail_zip": "94702",
-      "address_status": "Verified",
-      "purchases": 1,
-      "auction_purchases": 0,
-      "sales": 0,
-      "last_purchase": "2025-10-08",
-      "first_purchase": "2025-10-08",
-      "cities": [
-        "BERKELEY"
-      ],
-      "tags": [],
-      "properties": [
-        {
-          "doc_num": "2025125923",
-          "filed": "2025-10-08",
-          "doc_type": "DEED",
-          "seller": "ROSE NICHOLAS B",
-          "auction": false,
-          "parcels": 1,
-          "apn": "53-1616-14",
-          "address": "3040 DOHR ST",
-          "city": "BERKELEY",
-          "zip": "94702",
-          "use": "Multi-unit residential",
           "resold": false
         }
       ]
@@ -41233,7 +41267,7 @@
           "doc_num": "2026123264",
           "filed": "2026-09-29",
           "doc_type": "DEED",
-          "seller": "KELLEY ERMA L TR",
+          "seller": "PARKER LANGSTON TRUST",
           "auction": false,
           "parcels": 0,
           "apn": "",
@@ -50414,38 +50448,6 @@
       ]
     },
     {
-      "name": "TH VINEYARD LLC",
-      "buyer_type": "Investor",
-      "mail_address": "",
-      "mail_city": "",
-      "mail_state": "",
-      "mail_zip": "",
-      "address_status": "Pending county update",
-      "purchases": 1,
-      "auction_purchases": 0,
-      "sales": 0,
-      "last_purchase": "2026-07-09",
-      "first_purchase": "2026-07-09",
-      "cities": [],
-      "tags": [],
-      "properties": [
-        {
-          "doc_num": "2026089099",
-          "filed": "2026-07-09",
-          "doc_type": "DEED",
-          "seller": "KL LB PROPCO IV C LLC",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
-        }
-      ]
-    },
-    {
       "name": "2415 BALANCED TREE LLC",
       "buyer_type": "Investor",
       "mail_address": "",
@@ -55067,7 +55069,7 @@
       "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 0,
-      "sales": 1,
+      "sales": 2,
       "last_purchase": "2026-02-02",
       "first_purchase": "2026-02-02",
       "cities": [],
@@ -56964,70 +56966,6 @@
           "city": "LIVERMORE",
           "zip": "94551",
           "use": "Single family",
-          "resold": false
-        }
-      ]
-    },
-    {
-      "name": "LEIGH CAPITAL INC",
-      "buyer_type": "Investor",
-      "mail_address": "",
-      "mail_city": "",
-      "mail_state": "",
-      "mail_zip": "",
-      "address_status": "Pending county update",
-      "purchases": 1,
-      "auction_purchases": 0,
-      "sales": 0,
-      "last_purchase": "2025-10-08",
-      "first_purchase": "2025-10-08",
-      "cities": [],
-      "tags": [],
-      "properties": [
-        {
-          "doc_num": "2025125944",
-          "filed": "2025-10-08",
-          "doc_type": "DEED",
-          "seller": "BELL PAUL ADMR",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
-        }
-      ]
-    },
-    {
-      "name": "BEL AIRE LLC",
-      "buyer_type": "Investor",
-      "mail_address": "",
-      "mail_city": "",
-      "mail_state": "",
-      "mail_zip": "",
-      "address_status": "Pending county update",
-      "purchases": 1,
-      "auction_purchases": 0,
-      "sales": 0,
-      "last_purchase": "2025-10-08",
-      "first_purchase": "2025-10-08",
-      "cities": [],
-      "tags": [],
-      "properties": [
-        {
-          "doc_num": "2025126032",
-          "filed": "2025-10-08",
-          "doc_type": "DEED",
-          "seller": "HOGE DAVID A TR",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
           "resold": false
         }
       ]
