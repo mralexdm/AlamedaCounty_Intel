@@ -1,11 +1,5 @@
 {
  "scanned_days": {
-  "2025-10-09": {
-   "total": 106,
-   "parsed": 106,
-   "complete": true,
-   "scanned_at": "2026-09-30T07:45:26+00:00"
-  },
   "2025-10-10": {
    "total": 137,
    "parsed": 137,
@@ -154,7 +148,7 @@
    "total": 100,
    "parsed": 99,
    "complete": false,
-   "scanned_at": "2026-10-08T07:42:47+00:00"
+   "scanned_at": "2026-10-09T07:39:14+00:00"
   },
   "2025-11-04": {
    "total": 132,
@@ -214,7 +208,7 @@
    "total": 112,
    "parsed": 111,
    "complete": false,
-   "scanned_at": "2026-10-08T07:42:41+00:00"
+   "scanned_at": "2026-10-09T07:39:08+00:00"
   },
   "2025-11-14": {
    "total": 137,
@@ -238,7 +232,7 @@
    "total": 116,
    "parsed": 115,
    "complete": false,
-   "scanned_at": "2026-10-08T07:42:35+00:00"
+   "scanned_at": "2026-10-09T07:39:02+00:00"
   },
   "2025-11-18": {
    "total": 136,
@@ -766,7 +760,7 @@
    "total": 160,
    "parsed": 159,
    "complete": false,
-   "scanned_at": "2026-10-08T07:42:27+00:00"
+   "scanned_at": "2026-10-09T07:38:55+00:00"
   },
   "2026-02-14": {
    "total": 0,
@@ -808,7 +802,7 @@
    "total": 136,
    "parsed": 135,
    "complete": false,
-   "scanned_at": "2026-10-08T07:42:18+00:00"
+   "scanned_at": "2026-10-09T07:38:46+00:00"
   },
   "2026-02-21": {
    "total": 0,
@@ -1270,7 +1264,7 @@
    "total": 109,
    "parsed": 107,
    "complete": false,
-   "scanned_at": "2026-10-08T07:42:10+00:00"
+   "scanned_at": "2026-10-09T07:38:39+00:00"
   },
   "2026-05-09": {
    "total": 0,
@@ -1456,7 +1450,7 @@
    "total": 134,
    "parsed": 132,
    "complete": false,
-   "scanned_at": "2026-10-08T07:42:03+00:00"
+   "scanned_at": "2026-10-09T07:38:32+00:00"
   },
   "2026-06-09": {
    "total": 123,
@@ -1750,7 +1744,7 @@
    "total": 139,
    "parsed": 138,
    "complete": false,
-   "scanned_at": "2026-10-08T07:41:55+00:00"
+   "scanned_at": "2026-10-09T07:38:25+00:00"
   },
   "2026-07-28": {
    "total": 113,
@@ -1918,7 +1912,7 @@
    "total": 76,
    "parsed": 75,
    "complete": false,
-   "scanned_at": "2026-10-08T07:41:47+00:00"
+   "scanned_at": "2026-10-09T07:38:17+00:00"
   },
   "2026-08-25": {
    "total": 126,
@@ -2068,7 +2062,7 @@
    "total": 120,
    "parsed": 119,
    "complete": false,
-   "scanned_at": "2026-10-08T07:41:41+00:00"
+   "scanned_at": "2026-10-09T07:38:12+00:00"
   },
   "2026-09-19": {
    "total": 0,
@@ -2134,7 +2128,7 @@
    "total": 105,
    "parsed": 104,
    "complete": false,
-   "scanned_at": "2026-10-08T07:41:34+00:00"
+   "scanned_at": "2026-10-09T07:38:05+00:00"
   },
   "2026-09-30": {
    "total": 153,
@@ -2158,161 +2152,46 @@
    "total": 0,
    "parsed": 0,
    "complete": true,
-   "scanned_at": "2026-10-08T07:41:20+00:00"
+   "scanned_at": "2026-10-09T07:37:59+00:00"
   },
   "2026-10-04": {
    "total": 0,
    "parsed": 0,
    "complete": true,
-   "scanned_at": "2026-10-08T07:41:19+00:00"
+   "scanned_at": "2026-10-09T07:37:57+00:00"
   },
   "2026-10-05": {
    "total": 103,
    "parsed": 103,
    "complete": true,
-   "scanned_at": "2026-10-08T07:41:17+00:00"
+   "scanned_at": "2026-10-09T07:37:55+00:00"
   },
   "2026-10-06": {
    "total": 103,
    "parsed": 103,
    "complete": true,
-   "scanned_at": "2026-10-08T07:41:10+00:00"
+   "scanned_at": "2026-10-09T07:37:49+00:00"
   },
   "2026-10-07": {
    "total": 89,
    "parsed": 89,
    "complete": true,
-   "scanned_at": "2026-10-08T07:41:03+00:00"
+   "scanned_at": "2026-10-09T07:37:43+00:00"
   },
   "2026-10-08": {
+   "total": 94,
+   "parsed": 94,
+   "complete": true,
+   "scanned_at": "2026-10-09T07:37:37+00:00"
+  },
+  "2026-10-09": {
    "total": 0,
    "parsed": 0,
    "complete": true,
-   "scanned_at": "2026-10-08T07:40:49+00:00"
+   "scanned_at": "2026-10-09T07:37:24+00:00"
   }
  },
  "deeds": {
-  "2025126157": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025126157",
-   "filed": "2025-10-09",
-   "doc_type": "DEED",
-   "grantor": "111 BELL LLC",
-   "grantee": "WANG MICHAEL LEE",
-   "grantor_more": false,
-   "grantee_more": true
-  },
-  "2025126159": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025126159",
-   "filed": "2025-10-09",
-   "doc_type": "DEED",
-   "grantor": "ENDLISS TECHNOLOGY INC",
-   "grantee": "NELAPATLA SHYAM RAO",
-   "grantor_more": false,
-   "grantee_more": true
-  },
-  "2025126289": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025126289",
-   "filed": "2025-10-09",
-   "doc_type": "DEED",
-   "grantor": "BYRNE LESLIE M TR",
-   "grantee": "1345 EIGHTH STREET LLC",
-   "grantor_more": true,
-   "grantee_more": false
-  },
-  "2025126316": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025126316",
-   "filed": "2025-10-09",
-   "doc_type": "DEED",
-   "grantor": "DS GLOBAL LLC",
-   "grantee": "RUSSO WAYNE DANIEL JR",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025126317": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025126317",
-   "filed": "2025-10-09",
-   "doc_type": "DEED",
-   "grantor": "DS GLOBAL LLC",
-   "grantee": "RUSSO WAYNE DANIEL JR",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025126377": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025126377",
-   "filed": "2025-10-09",
-   "doc_type": "DEED",
-   "grantor": "TH EAST RANCH DUBLIN LLC",
-   "grantee": "DASARI ROHITH TR",
-   "grantor_more": false,
-   "grantee_more": true
-  },
-  "2025126435": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025126435",
-   "filed": "2025-10-09",
-   "doc_type": "TRUSTEES DEED",
-   "grantor": "PRESTIGE DEFAULT SERVICES LLC TR",
-   "grantee": "U S BANK TRUST NATIONAL ASSOCIATION TR",
-   "grantor_more": true,
-   "grantee_more": true
-  },
-  "2025126530": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025126530",
-   "filed": "2025-10-09",
-   "doc_type": "DEED",
-   "grantor": "LOEBEL SUSAN J TRUST",
-   "grantee": "PARU STREET LLC",
-   "grantor_more": true,
-   "grantee_more": false
-  },
-  "2025126532": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025126532",
-   "filed": "2025-10-09",
-   "doc_type": "DEED",
-   "grantor": "LOEBEL SUSAN J TRUST",
-   "grantee": "PARU STREET LLC",
-   "grantor_more": true,
-   "grantee_more": false
-  },
-  "2025126539": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025126539",
-   "filed": "2025-10-09",
-   "doc_type": "DEED",
-   "grantor": "ON POINT INVESTMENTS LLC",
-   "grantee": "LI JUNRAN",
-   "grantor_more": false,
-   "grantee_more": true
-  },
-  "2025126666": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025126666",
-   "filed": "2025-10-09",
-   "doc_type": "DEED",
-   "grantor": "SMD ENTERPRISES MB WESTGATE REHABILITATION FACILITY LLC",
-   "grantee": "JOSHI AMAN",
-   "grantor_more": true,
-   "grantee_more": true
-  },
   "2025126780": {
    "apns": [],
    "detail_checked": false,
@@ -48809,6 +48688,135 @@
    "doc_type": "DEED",
    "grantor": "BCB FALLON PROPERTIES LLC",
    "grantee": "ALISHA & ARYAN REALTY CALIFORNIA LLC",
+   "grantor_more": false,
+   "grantee_more": false
+  },
+  "2026127708": {
+   "apns": [
+    "42-4260-23"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026127708",
+   "filed": "2026-10-08",
+   "doc_type": "DEED",
+   "grantor": "WELLS FARGO BANK N A",
+   "grantee": "AZTEC PROPERTY PARTNERS LLC",
+   "grantor_more": false,
+   "grantee_more": false
+  },
+  "2026127823": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026127823",
+   "filed": "2026-10-08",
+   "doc_type": "DEED",
+   "grantor": "TOBIAS 1014 LLC",
+   "grantee": "YU DAVID WEI HO",
+   "grantor_more": false,
+   "grantee_more": false
+  },
+  "2026127861": {
+   "apns": [
+    "501-1816-423"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026127861",
+   "filed": "2026-10-08",
+   "doc_type": "DEED",
+   "grantor": "LEE ANTHONY VAN JR TR",
+   "grantee": "NOORSAN LLC",
+   "grantor_more": true,
+   "grantee_more": false
+  },
+  "2026127866": {
+   "apns": [
+    "483-119-8"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026127866",
+   "filed": "2026-10-08",
+   "doc_type": "TRUSTEES DEED",
+   "grantor": "FORECLOSURE CO INC TR",
+   "grantee": "NEW BRIDGE EQUITY LLC",
+   "grantor_more": true,
+   "grantee_more": false
+  },
+  "2026127881": {
+   "apns": [
+    "30-1923-47"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026127881",
+   "filed": "2026-10-08",
+   "doc_type": "DEED",
+   "grantor": "OATIS RONALD EUGENE II",
+   "grantee": "4058 PATTERSON AVE LLC",
+   "grantor_more": false,
+   "grantee_more": false
+  },
+  "2026127904": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026127904",
+   "filed": "2026-10-08",
+   "doc_type": "DEED",
+   "grantor": "FOLGER HOLDINGS LLC",
+   "grantee": "ZHAO CHONG",
+   "grantor_more": false,
+   "grantee_more": true
+  },
+  "2026127932": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026127932",
+   "filed": "2026-10-08",
+   "doc_type": "DEED",
+   "grantor": "LANDSEA HOMES OF CALIFORNIA LLC",
+   "grantee": "CHENG VICTOR JIA ZHEN",
+   "grantor_more": false,
+   "grantee_more": true
+  },
+  "2026127956": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026127956",
+   "filed": "2026-10-08",
+   "doc_type": "DEED",
+   "grantor": "CHEN ZIXIN",
+   "grantee": "2628 ZIXIN LLC",
+   "grantor_more": false,
+   "grantee_more": false
+  },
+  "2026128019": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026128019",
+   "filed": "2026-10-08",
+   "doc_type": "DEED",
+   "grantor": "2000 HEARST PARTNERS LLC",
+   "grantee": "2000 HEARST AVE SPACES LLC",
+   "grantor_more": false,
+   "grantee_more": false
+  },
+  "2026128032": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026128032",
+   "filed": "2026-10-08",
+   "doc_type": "DEED",
+   "grantor": "E&E DWELLING LLC",
+   "grantee": "LIU PIN CHOU",
+   "grantor_more": false,
+   "grantee_more": true
+  },
+  "2026128043": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026128043",
+   "filed": "2026-10-08",
+   "doc_type": "DEED",
+   "grantor": "TH EAST RANCH DUBLIN LLC",
+   "grantee": "MAQSUDI ROYA",
    "grantor_more": false,
    "grantee_more": false
   }

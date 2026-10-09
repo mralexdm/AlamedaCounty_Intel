@@ -1,24 +1,24 @@
 {
-  "fetched_at": "2026-10-08T07:43:26.273584+00:00",
+  "fetched_at": "2026-10-09T07:39:41.150752+00:00",
   "source": "Alameda County Clerk-Recorder deeds + Assessor parcel roll",
   "date_range": {
-    "from": "2025-10-09",
-    "to": "2026-10-08",
+    "from": "2025-10-10",
+    "to": "2026-10-09",
     "lookback_days": 365
   },
   "coverage": {
     "days_in_window": 365,
     "days_scanned": 354,
-    "oldest_scanned": "2025-10-09",
-    "newest_scanned": "2026-10-08"
+    "oldest_scanned": "2025-10-10",
+    "newest_scanned": "2026-10-09"
   },
   "parcel_layer_through": "2026-09-02",
   "total": 1485,
-  "with_address": 903,
+  "with_address": 901,
   "repeat_buyers": 225,
   "skipped": {
-    "not_target": 1861,
-    "self_transfer": 346
+    "not_target": 1858,
+    "self_transfer": 348
   },
   "buyers": [
     {
@@ -1728,7 +1728,8 @@
       "last_purchase": "2026-09-09",
       "first_purchase": "2025-10-10",
       "cities": [
-        "OAKLAND"
+        "OAKLAND",
+        "SAN LEANDRO"
       ],
       "tags": [
         "Repeat buyer",
@@ -1741,12 +1742,12 @@
           "doc_type": "DEED",
           "seller": "FOREVERHOME PROPERTIES LLC",
           "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
+          "parcels": 1,
+          "apn": "75-188-40",
+          "address": "237 BELLEVIEW DR",
+          "city": "SAN LEANDRO",
+          "zip": "94577",
+          "use": "Single family",
           "resold": false
         },
         {
@@ -2028,12 +2029,12 @@
           "doc_type": "DEED",
           "seller": "RIEKER THOMAS F",
           "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
+          "parcels": 1,
+          "apn": "75-185-14",
+          "address": "450 PARK ST",
+          "city": "SAN LEANDRO",
+          "zip": "94577",
+          "use": "Single family",
           "resold": false
         },
         {
@@ -3444,7 +3445,7 @@
       "address_status": "Verified",
       "purchases": 6,
       "auction_purchases": 0,
-      "sales": 7,
+      "sales": 6,
       "last_purchase": "2026-05-29",
       "first_purchase": "2025-10-29",
       "cities": [
@@ -5682,6 +5683,70 @@
       ]
     },
     {
+      "name": "NOORSAN LLC",
+      "buyer_type": "Investor",
+      "mail_address": "233 E WEDDEL DR G",
+      "mail_city": "SUNNYVALE",
+      "mail_state": "CA",
+      "mail_zip": "94089",
+      "address_status": "Verified",
+      "purchases": 3,
+      "auction_purchases": 0,
+      "sales": 0,
+      "last_purchase": "2026-10-08",
+      "first_purchase": "2026-06-09",
+      "cities": [
+        "FREMONT"
+      ],
+      "tags": [
+        "Repeat buyer"
+      ],
+      "properties": [
+        {
+          "doc_num": "2026127861",
+          "filed": "2026-10-08",
+          "doc_type": "DEED",
+          "seller": "LEE ANTHONY VAN JR TR",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        },
+        {
+          "doc_num": "2026108083",
+          "filed": "2026-08-21",
+          "doc_type": "DEED",
+          "seller": "LEE CHARLES",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        },
+        {
+          "doc_num": "2026075358",
+          "filed": "2026-06-09",
+          "doc_type": "DEED",
+          "seller": "GUAN STEVEN",
+          "auction": false,
+          "parcels": 11,
+          "apn": "501-1816-106",
+          "address": "3674 OAKWOOD TER 203",
+          "city": "FREMONT",
+          "zip": "94536",
+          "use": "Condo / townhome",
+          "resold": false
+        }
+      ]
+    },
+    {
       "name": "JWEINAT INVESTMENTS & REAL ESTATE INC",
       "buyer_type": "Investor",
       "mail_address": "5354 EGGERS DR",
@@ -5950,7 +6015,7 @@
       "address_status": "Verified",
       "purchases": 3,
       "auction_purchases": 0,
-      "sales": 1,
+      "sales": 2,
       "last_purchase": "2026-09-01",
       "first_purchase": "2025-12-09",
       "cities": [
@@ -8521,56 +8586,6 @@
           "city": "OAKLAND",
           "zip": "94618",
           "use": "Multi-unit residential",
-          "resold": false
-        }
-      ]
-    },
-    {
-      "name": "NOORSAN LLC",
-      "buyer_type": "Investor",
-      "mail_address": "233 E WEDDEL DR G",
-      "mail_city": "SUNNYVALE",
-      "mail_state": "CA",
-      "mail_zip": "94089",
-      "address_status": "Verified",
-      "purchases": 2,
-      "auction_purchases": 0,
-      "sales": 0,
-      "last_purchase": "2026-08-21",
-      "first_purchase": "2026-06-09",
-      "cities": [
-        "FREMONT"
-      ],
-      "tags": [
-        "Repeat buyer"
-      ],
-      "properties": [
-        {
-          "doc_num": "2026108083",
-          "filed": "2026-08-21",
-          "doc_type": "DEED",
-          "seller": "LEE CHARLES",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
-        },
-        {
-          "doc_num": "2026075358",
-          "filed": "2026-06-09",
-          "doc_type": "DEED",
-          "seller": "GUAN STEVEN",
-          "auction": false,
-          "parcels": 11,
-          "apn": "501-1816-106",
-          "address": "3674 OAKWOOD TER 203",
-          "city": "FREMONT",
-          "zip": "94536",
-          "use": "Condo / townhome",
           "resold": false
         }
       ]
@@ -12416,51 +12431,50 @@
       ]
     },
     {
-      "name": "PARU STREET LLC",
+      "name": "NEW BRIDGE EQUITY LLC",
       "buyer_type": "Investor",
-      "mail_address": "2601 BLANDING AVE C252",
-      "mail_city": "ALAMEDA",
-      "mail_state": "CA",
-      "mail_zip": "94501",
-      "address_status": "Verified",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
       "purchases": 2,
-      "auction_purchases": 0,
+      "auction_purchases": 1,
       "sales": 0,
-      "last_purchase": "2025-10-09",
-      "first_purchase": "2025-10-09",
-      "cities": [
-        "ALAMEDA"
-      ],
+      "last_purchase": "2026-10-08",
+      "first_purchase": "2026-07-16",
+      "cities": [],
       "tags": [
-        "Repeat buyer"
+        "Repeat buyer",
+        "Foreclosure auction buyer"
       ],
       "properties": [
         {
-          "doc_num": "2025126530",
-          "filed": "2025-10-09",
-          "doc_type": "DEED",
-          "seller": "LOEBEL SUSAN J TRUST",
-          "auction": false,
-          "parcels": 1,
-          "apn": "72-333-6",
-          "address": "1303 PARU ST",
-          "city": "ALAMEDA",
-          "zip": "94501",
-          "use": "Multi-unit residential",
+          "doc_num": "2026127866",
+          "filed": "2026-10-08",
+          "doc_type": "TRUSTEES DEED",
+          "seller": "FORECLOSURE CO INC TR",
+          "auction": true,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
           "resold": false
         },
         {
-          "doc_num": "2025126532",
-          "filed": "2025-10-09",
+          "doc_num": "2026092062",
+          "filed": "2026-07-16",
           "doc_type": "DEED",
-          "seller": "LOEBEL SUSAN J TRUST",
+          "seller": "FLORES ALBERTINA",
           "auction": false,
-          "parcels": 1,
-          "apn": "72-333-5",
-          "address": "1319 PARU ST",
-          "city": "ALAMEDA",
-          "zip": "94501",
-          "use": "Multi-unit residential",
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
           "resold": false
         }
       ]
@@ -39953,35 +39967,65 @@
       ]
     },
     {
-      "name": "1345 EIGHTH STREET LLC",
+      "name": "AZTEC PROPERTY PARTNERS LLC",
       "buyer_type": "Investor",
-      "mail_address": "962 CORNELL AVE",
-      "mail_city": "ALBANY",
-      "mail_state": "CA",
-      "mail_zip": "94706",
-      "address_status": "Verified",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 0,
       "sales": 0,
-      "last_purchase": "2025-10-09",
-      "first_purchase": "2025-10-09",
-      "cities": [
-        "BERKELEY"
-      ],
+      "last_purchase": "2026-10-08",
+      "first_purchase": "2026-10-08",
+      "cities": [],
       "tags": [],
       "properties": [
         {
-          "doc_num": "2025126289",
-          "filed": "2025-10-09",
+          "doc_num": "2026127708",
+          "filed": "2026-10-08",
           "doc_type": "DEED",
-          "seller": "BYRNE LESLIE M TR",
+          "seller": "WELLS FARGO BANK N A",
           "auction": false,
-          "parcels": 1,
-          "apn": "60-2351-1-2",
-          "address": "1345 8TH ST",
-          "city": "BERKELEY",
-          "zip": "94710",
-          "use": "Commercial / other",
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        }
+      ]
+    },
+    {
+      "name": "4058 PATTERSON AVE LLC",
+      "buyer_type": "Investor",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
+      "purchases": 1,
+      "auction_purchases": 0,
+      "sales": 0,
+      "last_purchase": "2026-10-08",
+      "first_purchase": "2026-10-08",
+      "cities": [],
+      "tags": [],
+      "properties": [
+        {
+          "doc_num": "2026127881",
+          "filed": "2026-10-08",
+          "doc_type": "DEED",
+          "seller": "OATIS RONALD EUGENE II",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
           "resold": false
         }
       ]
@@ -44886,7 +44930,9 @@
       "sales": 0,
       "last_purchase": "2026-08-31",
       "first_purchase": "2026-08-31",
-      "cities": [],
+      "cities": [
+        "SAN LEANDRO"
+      ],
       "tags": [],
       "properties": [
         {
@@ -44895,12 +44941,12 @@
           "doc_type": "DEED",
           "seller": "ARENOTT RAYMOND S TR",
           "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
+          "parcels": 1,
+          "apn": "75-189-2",
+          "address": "333 E 14TH ST",
+          "city": "SAN LEANDRO",
+          "zip": "94577",
+          "use": "Commercial / other",
           "resold": false
         }
       ]
@@ -49661,38 +49707,6 @@
           "filed": "2026-07-17",
           "doc_type": "DEED",
           "seller": "KOLESSAR JEFFREY RECVR",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
-        }
-      ]
-    },
-    {
-      "name": "NEW BRIDGE EQUITY LLC",
-      "buyer_type": "Investor",
-      "mail_address": "",
-      "mail_city": "",
-      "mail_state": "",
-      "mail_zip": "",
-      "address_status": "Pending county update",
-      "purchases": 1,
-      "auction_purchases": 0,
-      "sales": 0,
-      "last_purchase": "2026-07-16",
-      "first_purchase": "2026-07-16",
-      "cities": [],
-      "tags": [],
-      "properties": [
-        {
-          "doc_num": "2026092062",
-          "filed": "2026-07-16",
-          "doc_type": "DEED",
-          "seller": "FLORES ALBERTINA",
           "auction": false,
           "parcels": 0,
           "apn": "",
