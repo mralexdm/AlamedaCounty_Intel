@@ -1,11 +1,5 @@
 {
  "scanned_days": {
-  "2025-10-11": {
-   "total": 0,
-   "parsed": 0,
-   "complete": true,
-   "scanned_at": "2026-09-30T07:45:08+00:00"
-  },
   "2025-10-12": {
    "total": 0,
    "parsed": 0,
@@ -142,7 +136,7 @@
    "total": 100,
    "parsed": 99,
    "complete": false,
-   "scanned_at": "2026-10-10T07:34:12+00:00"
+   "scanned_at": "2026-10-11T07:36:09+00:00"
   },
   "2025-11-04": {
    "total": 132,
@@ -202,7 +196,7 @@
    "total": 112,
    "parsed": 111,
    "complete": false,
-   "scanned_at": "2026-10-10T07:34:07+00:00"
+   "scanned_at": "2026-10-11T07:36:04+00:00"
   },
   "2025-11-14": {
    "total": 137,
@@ -226,7 +220,7 @@
    "total": 116,
    "parsed": 115,
    "complete": false,
-   "scanned_at": "2026-10-10T07:34:00+00:00"
+   "scanned_at": "2026-10-11T07:35:57+00:00"
   },
   "2025-11-18": {
    "total": 136,
@@ -754,7 +748,7 @@
    "total": 160,
    "parsed": 159,
    "complete": false,
-   "scanned_at": "2026-10-10T07:33:53+00:00"
+   "scanned_at": "2026-10-11T07:35:50+00:00"
   },
   "2026-02-14": {
    "total": 0,
@@ -796,7 +790,7 @@
    "total": 136,
    "parsed": 135,
    "complete": false,
-   "scanned_at": "2026-10-10T07:33:44+00:00"
+   "scanned_at": "2026-10-11T07:35:42+00:00"
   },
   "2026-02-21": {
    "total": 0,
@@ -1258,7 +1252,7 @@
    "total": 109,
    "parsed": 107,
    "complete": false,
-   "scanned_at": "2026-10-10T07:33:36+00:00"
+   "scanned_at": "2026-10-11T07:35:34+00:00"
   },
   "2026-05-09": {
    "total": 0,
@@ -1444,7 +1438,7 @@
    "total": 134,
    "parsed": 132,
    "complete": false,
-   "scanned_at": "2026-10-10T07:33:29+00:00"
+   "scanned_at": "2026-10-11T07:35:27+00:00"
   },
   "2026-06-09": {
    "total": 123,
@@ -1738,7 +1732,7 @@
    "total": 139,
    "parsed": 138,
    "complete": false,
-   "scanned_at": "2026-10-10T07:33:21+00:00"
+   "scanned_at": "2026-10-11T07:35:20+00:00"
   },
   "2026-07-28": {
    "total": 113,
@@ -1906,7 +1900,7 @@
    "total": 76,
    "parsed": 75,
    "complete": false,
-   "scanned_at": "2026-10-10T07:33:13+00:00"
+   "scanned_at": "2026-10-11T07:35:12+00:00"
   },
   "2026-08-25": {
    "total": 126,
@@ -2056,7 +2050,7 @@
    "total": 120,
    "parsed": 119,
    "complete": false,
-   "scanned_at": "2026-10-10T07:33:07+00:00"
+   "scanned_at": "2026-10-11T07:35:07+00:00"
   },
   "2026-09-19": {
    "total": 0,
@@ -2122,7 +2116,7 @@
    "total": 105,
    "parsed": 104,
    "complete": false,
-   "scanned_at": "2026-10-10T07:33:01+00:00"
+   "scanned_at": "2026-10-11T07:35:00+00:00"
   },
   "2026-09-30": {
    "total": 153,
@@ -2158,37 +2152,43 @@
    "total": 103,
    "parsed": 103,
    "complete": true,
-   "scanned_at": "2026-10-10T07:32:52+00:00"
+   "scanned_at": "2026-10-11T07:34:54+00:00"
   },
   "2026-10-06": {
    "total": 103,
    "parsed": 103,
    "complete": true,
-   "scanned_at": "2026-10-10T07:32:45+00:00"
+   "scanned_at": "2026-10-11T07:34:47+00:00"
   },
   "2026-10-07": {
    "total": 89,
    "parsed": 89,
    "complete": true,
-   "scanned_at": "2026-10-10T07:32:39+00:00"
+   "scanned_at": "2026-10-11T07:34:41+00:00"
   },
   "2026-10-08": {
    "total": 94,
    "parsed": 94,
    "complete": true,
-   "scanned_at": "2026-10-10T07:32:33+00:00"
+   "scanned_at": "2026-10-11T07:34:36+00:00"
   },
   "2026-10-09": {
    "total": 137,
    "parsed": 134,
    "complete": false,
-   "scanned_at": "2026-10-10T07:32:28+00:00"
+   "scanned_at": "2026-10-11T07:34:31+00:00"
   },
   "2026-10-10": {
    "total": 0,
    "parsed": 0,
    "complete": true,
-   "scanned_at": "2026-10-10T07:32:00+00:00"
+   "scanned_at": "2026-10-11T07:34:23+00:00"
+  },
+  "2026-10-11": {
+   "total": 0,
+   "parsed": 0,
+   "complete": true,
+   "scanned_at": "2026-10-11T07:34:21+00:00"
   }
  },
  "deeds": {
