@@ -1,16 +1,16 @@
 {
-  "fetched_at": "2026-10-11T07:36:37.376075+00:00",
+  "fetched_at": "2026-10-12T07:58:11.576253+00:00",
   "source": "Alameda County Clerk-Recorder deeds + Assessor parcel roll",
   "date_range": {
-    "from": "2025-10-12",
-    "to": "2026-10-11",
+    "from": "2025-10-13",
+    "to": "2026-10-12",
     "lookback_days": 365
   },
   "coverage": {
     "days_in_window": 365,
     "days_scanned": 353,
-    "oldest_scanned": "2025-10-12",
-    "newest_scanned": "2026-10-11"
+    "oldest_scanned": "2025-10-13",
+    "newest_scanned": "2026-10-12"
   },
   "parcel_layer_through": "2026-09-02",
   "total": 1491,
