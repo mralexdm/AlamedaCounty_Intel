@@ -1,23 +1,23 @@
 {
-  "fetched_at": "2026-10-12T07:58:11.576253+00:00",
+  "fetched_at": "2026-10-13T07:46:18.787990+00:00",
   "source": "Alameda County Clerk-Recorder deeds + Assessor parcel roll",
   "date_range": {
-    "from": "2025-10-13",
-    "to": "2026-10-12",
+    "from": "2025-10-14",
+    "to": "2026-10-13",
     "lookback_days": 365
   },
   "coverage": {
     "days_in_window": 365,
     "days_scanned": 353,
-    "oldest_scanned": "2025-10-13",
-    "newest_scanned": "2026-10-12"
+    "oldest_scanned": "2025-10-14",
+    "newest_scanned": "2026-10-13"
   },
   "parcel_layer_through": "2026-09-02",
-  "total": 1491,
-  "with_address": 897,
+  "total": 1489,
+  "with_address": 894,
   "repeat_buyers": 224,
   "skipped": {
-    "not_target": 1852,
+    "not_target": 1849,
     "self_transfer": 350
   },
   "buyers": [
@@ -39671,103 +39671,35 @@
       ]
     },
     {
-      "name": "BAY TIDE LLC",
+      "name": "RAULEK LLC",
       "buyer_type": "Investor",
-      "mail_address": "PO BOX 83",
-      "mail_city": "BERKELEY",
-      "mail_state": "CA",
-      "mail_zip": "94701",
-      "address_status": "Verified",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 0,
       "sales": 0,
-      "last_purchase": "2025-10-13",
-      "first_purchase": "2025-10-13",
+      "last_purchase": "2026-10-12",
+      "first_purchase": "2026-10-12",
       "cities": [
-        "OAKLAND"
+        "PLEASANTON"
       ],
       "tags": [],
       "properties": [
         {
-          "doc_num": "2025127872",
-          "filed": "2025-10-13",
+          "doc_num": "2026128970",
+          "filed": "2026-10-12",
           "doc_type": "DEED",
-          "seller": "SHARPLESS JAMES G",
+          "seller": "JHA ASHUTOSH KUMAR",
           "auction": false,
           "parcels": 1,
-          "apn": "13-1144-2",
-          "address": "419 48TH ST",
-          "city": "OAKLAND",
-          "zip": "94609",
-          "use": "Single family",
-          "resold": false
-        }
-      ]
-    },
-    {
-      "name": "PARK PROPERTY INVESTORS LLC",
-      "buyer_type": "Investor",
-      "mail_address": "31 MAGDALENA CT",
-      "mail_city": "MILL VALLEY",
-      "mail_state": "CA",
-      "mail_zip": "94941",
-      "address_status": "Verified",
-      "purchases": 1,
-      "auction_purchases": 0,
-      "sales": 0,
-      "last_purchase": "2025-10-13",
-      "first_purchase": "2025-10-13",
-      "cities": [
-        "OAKLAND"
-      ],
-      "tags": [],
-      "properties": [
-        {
-          "doc_num": "2025127974",
-          "filed": "2025-10-13",
-          "doc_type": "DEED",
-          "seller": "OAKLANDS PARKPLACE LLC",
-          "auction": false,
-          "parcels": 1,
-          "apn": "22-339-34-1",
-          "address": "2820 PARK BLVD",
-          "city": "OAKLAND",
-          "zip": "94610",
-          "use": "Multi-unit residential",
-          "resold": false
-        }
-      ]
-    },
-    {
-      "name": "GOLDEN BLUE STAR PROPERTIES LLC",
-      "buyer_type": "Investor",
-      "mail_address": "1445 34TH AVE 7957",
-      "mail_city": "OAKLAND",
-      "mail_state": "CA",
-      "mail_zip": "94601",
-      "address_status": "Verified",
-      "purchases": 1,
-      "auction_purchases": 0,
-      "sales": 0,
-      "last_purchase": "2025-10-13",
-      "first_purchase": "2025-10-13",
-      "cities": [
-        "OAKLAND"
-      ],
-      "tags": [],
-      "properties": [
-        {
-          "doc_num": "2025128113",
-          "filed": "2025-10-13",
-          "doc_type": "DEED",
-          "seller": "NORCAL BAY HOLDING LLC",
-          "auction": false,
-          "parcels": 1,
-          "apn": "41-4139-20",
-          "address": "1100 75TH AVE",
-          "city": "OAKLAND",
-          "zip": "94621",
-          "use": "Single family",
+          "apn": "941-2100-1-3",
+          "address": "4140 FOOTHILL RD",
+          "city": "PLEASANTON",
+          "zip": "94588",
+          "use": "Commercial / other",
           "resold": false
         }
       ]

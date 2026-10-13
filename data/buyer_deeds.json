@@ -1,11 +1,5 @@
 {
  "scanned_days": {
-  "2025-10-13": {
-   "total": 111,
-   "parsed": 111,
-   "complete": true,
-   "scanned_at": "2026-09-30T07:45:04+00:00"
-  },
   "2025-10-14": {
    "total": 107,
    "parsed": 107,
@@ -130,7 +124,7 @@
    "total": 100,
    "parsed": 99,
    "complete": false,
-   "scanned_at": "2026-10-12T07:57:35+00:00"
+   "scanned_at": "2026-10-13T07:45:38+00:00"
   },
   "2025-11-04": {
    "total": 132,
@@ -190,7 +184,7 @@
    "total": 112,
    "parsed": 111,
    "complete": false,
-   "scanned_at": "2026-10-12T07:57:29+00:00"
+   "scanned_at": "2026-10-13T07:45:32+00:00"
   },
   "2025-11-14": {
    "total": 137,
@@ -214,7 +208,7 @@
    "total": 116,
    "parsed": 115,
    "complete": false,
-   "scanned_at": "2026-10-12T07:57:22+00:00"
+   "scanned_at": "2026-10-13T07:45:25+00:00"
   },
   "2025-11-18": {
    "total": 136,
@@ -742,7 +736,7 @@
    "total": 160,
    "parsed": 159,
    "complete": false,
-   "scanned_at": "2026-10-12T07:57:15+00:00"
+   "scanned_at": "2026-10-13T07:45:18+00:00"
   },
   "2026-02-14": {
    "total": 0,
@@ -784,7 +778,7 @@
    "total": 136,
    "parsed": 135,
    "complete": false,
-   "scanned_at": "2026-10-12T07:57:05+00:00"
+   "scanned_at": "2026-10-13T07:45:08+00:00"
   },
   "2026-02-21": {
    "total": 0,
@@ -1246,7 +1240,7 @@
    "total": 109,
    "parsed": 107,
    "complete": false,
-   "scanned_at": "2026-10-12T07:56:57+00:00"
+   "scanned_at": "2026-10-13T07:45:00+00:00"
   },
   "2026-05-09": {
    "total": 0,
@@ -1432,7 +1426,7 @@
    "total": 134,
    "parsed": 132,
    "complete": false,
-   "scanned_at": "2026-10-12T07:56:50+00:00"
+   "scanned_at": "2026-10-13T07:44:53+00:00"
   },
   "2026-06-09": {
    "total": 123,
@@ -1726,7 +1720,7 @@
    "total": 139,
    "parsed": 138,
    "complete": false,
-   "scanned_at": "2026-10-12T07:56:41+00:00"
+   "scanned_at": "2026-10-13T07:44:44+00:00"
   },
   "2026-07-28": {
    "total": 113,
@@ -1894,7 +1888,7 @@
    "total": 76,
    "parsed": 75,
    "complete": false,
-   "scanned_at": "2026-10-12T07:56:33+00:00"
+   "scanned_at": "2026-10-13T07:44:36+00:00"
   },
   "2026-08-25": {
    "total": 126,
@@ -2044,7 +2038,7 @@
    "total": 120,
    "parsed": 119,
    "complete": false,
-   "scanned_at": "2026-10-12T07:56:28+00:00"
+   "scanned_at": "2026-10-13T07:44:30+00:00"
   },
   "2026-09-19": {
    "total": 0,
@@ -2110,7 +2104,7 @@
    "total": 105,
    "parsed": 104,
    "complete": false,
-   "scanned_at": "2026-10-12T07:56:21+00:00"
+   "scanned_at": "2026-10-13T07:44:23+00:00"
   },
   "2026-09-30": {
    "total": 153,
@@ -2158,117 +2152,46 @@
    "total": 89,
    "parsed": 89,
    "complete": true,
-   "scanned_at": "2026-10-12T07:56:08+00:00"
+   "scanned_at": "2026-10-13T07:44:17+00:00"
   },
   "2026-10-08": {
    "total": 94,
    "parsed": 94,
    "complete": true,
-   "scanned_at": "2026-10-12T07:56:02+00:00"
+   "scanned_at": "2026-10-13T07:44:11+00:00"
   },
   "2026-10-09": {
    "total": 137,
    "parsed": 134,
    "complete": false,
-   "scanned_at": "2026-10-12T07:55:56+00:00"
+   "scanned_at": "2026-10-13T07:44:05+00:00"
   },
   "2026-10-10": {
    "total": 0,
    "parsed": 0,
    "complete": true,
-   "scanned_at": "2026-10-12T07:55:48+00:00"
+   "scanned_at": "2026-10-13T07:43:57+00:00"
   },
   "2026-10-11": {
    "total": 0,
    "parsed": 0,
    "complete": true,
-   "scanned_at": "2026-10-12T07:55:46+00:00"
+   "scanned_at": "2026-10-13T07:43:56+00:00"
   },
   "2026-10-12": {
+   "total": 73,
+   "parsed": 73,
+   "complete": true,
+   "scanned_at": "2026-10-13T07:43:54+00:00"
+  },
+  "2026-10-13": {
    "total": 0,
    "parsed": 0,
    "complete": true,
-   "scanned_at": "2026-10-12T07:55:45+00:00"
+   "scanned_at": "2026-10-13T07:43:47+00:00"
   }
  },
  "deeds": {
-  "2025127872": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025127872",
-   "filed": "2025-10-13",
-   "doc_type": "DEED",
-   "grantor": "SHARPLESS JAMES G",
-   "grantee": "BAY TIDE LLC",
-   "grantor_more": true,
-   "grantee_more": false
-  },
-  "2025127974": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025127974",
-   "filed": "2025-10-13",
-   "doc_type": "DEED",
-   "grantor": "OAKLANDS PARKPLACE LLC",
-   "grantee": "PARK PROPERTY INVESTORS LLC",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025128107": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025128107",
-   "filed": "2025-10-13",
-   "doc_type": "DEED",
-   "grantor": "NORCAL CAPITAL INVESTMENTS LLC",
-   "grantee": "ROBERTS MARIKO SARAH",
-   "grantor_more": true,
-   "grantee_more": false
-  },
-  "2025128113": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025128113",
-   "filed": "2025-10-13",
-   "doc_type": "DEED",
-   "grantor": "NORCAL BAY HOLDING LLC",
-   "grantee": "GOLDEN BLUE STAR PROPERTIES LLC",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025128193": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025128193",
-   "filed": "2025-10-13",
-   "doc_type": "DEED",
-   "grantor": "DR LIVERMORE 1 LLC",
-   "grantee": "CITY LIVERMORE",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025128231": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025128231",
-   "filed": "2025-10-13",
-   "doc_type": "DEED",
-   "grantor": "TOLL WEST COAST LLC",
-   "grantee": "PATLAMMAGARI RAGHAVENDER REDDY",
-   "grantor_more": false,
-   "grantee_more": true
-  },
-  "2025128248": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025128248",
-   "filed": "2025-10-13",
-   "doc_type": "TRUSTEES DEED",
-   "grantor": "AFFINIA DEFAULT SERVICES LLC TR",
-   "grantee": "BAXTER CREDIT UNION",
-   "grantor_more": true,
-   "grantee_more": false
-  },
   "2025128301": {
    "apns": [],
    "detail_checked": false,
@@ -48811,6 +48734,30 @@
    "doc_type": "TRUSTEES DEED",
    "grantor": "S B S TRUST DEED NETWORK TR",
    "grantee": "ANCHOR ASSETS XVIII HOLDINGS LLC",
+   "grantor_more": true,
+   "grantee_more": false
+  },
+  "2026128970": {
+   "apns": [
+    "941-2100-1"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026128970",
+   "filed": "2026-10-12",
+   "doc_type": "DEED",
+   "grantor": "JHA ASHUTOSH KUMAR",
+   "grantee": "RAULEK LLC",
+   "grantor_more": false,
+   "grantee_more": false
+  },
+  "2026129110": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026129110",
+   "filed": "2026-10-12",
+   "doc_type": "DEED",
+   "grantor": "NORCAL BAY HOLDING LLC",
+   "grantee": "NORCAL BAY HOLDING LLC",
    "grantor_more": true,
    "grantee_more": false
   }
