@@ -1,24 +1,24 @@
 {
-  "fetched_at": "2026-10-13T07:46:18.787990+00:00",
+  "fetched_at": "2026-10-14T07:34:54.559873+00:00",
   "source": "Alameda County Clerk-Recorder deeds + Assessor parcel roll",
   "date_range": {
-    "from": "2025-10-14",
-    "to": "2026-10-13",
+    "from": "2025-10-15",
+    "to": "2026-10-14",
     "lookback_days": 365
   },
   "coverage": {
     "days_in_window": 365,
-    "days_scanned": 353,
-    "oldest_scanned": "2025-10-14",
-    "newest_scanned": "2026-10-13"
+    "days_scanned": 354,
+    "oldest_scanned": "2025-10-15",
+    "newest_scanned": "2026-10-14"
   },
   "parcel_layer_through": "2026-09-02",
   "total": 1489,
-  "with_address": 894,
+  "with_address": 891,
   "repeat_buyers": 224,
   "skipped": {
-    "not_target": 1849,
-    "self_transfer": 350
+    "not_target": 1848,
+    "self_transfer": 353
   },
   "buyers": [
     {
@@ -266,7 +266,7 @@
       "address_status": "Verified",
       "purchases": 15,
       "auction_purchases": 0,
-      "sales": 155,
+      "sales": 157,
       "last_purchase": "2026-07-31",
       "first_purchase": "2025-10-21",
       "cities": [
@@ -1715,6 +1715,142 @@
       ]
     },
     {
+      "name": "ANSON CAUSEWAY BAY FINANCIAL LLC",
+      "buyer_type": "Investor",
+      "mail_address": "662 DOUGLAS DR",
+      "mail_city": "SAN LEANDRO",
+      "mail_state": "CA",
+      "mail_zip": "94577",
+      "address_status": "Verified",
+      "purchases": 8,
+      "auction_purchases": 0,
+      "sales": 7,
+      "last_purchase": "2026-10-13",
+      "first_purchase": "2025-12-05",
+      "cities": [
+        "ASHLAND",
+        "FREMONT"
+      ],
+      "tags": [
+        "Repeat buyer",
+        "Flipper (resold a property)"
+      ],
+      "properties": [
+        {
+          "doc_num": "2026129649",
+          "filed": "2026-10-13",
+          "doc_type": "DEED",
+          "seller": "SHARK INVESTMENT GROUP INC",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        },
+        {
+          "doc_num": "2026118270",
+          "filed": "2026-09-17",
+          "doc_type": "DEED",
+          "seller": "SAT CAPITAL GROUP LLC",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        },
+        {
+          "doc_num": "2026088522",
+          "filed": "2026-07-08",
+          "doc_type": "DEED",
+          "seller": "SAT CAPITAL GROUP LLC",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        },
+        {
+          "doc_num": "2026082137",
+          "filed": "2026-06-24",
+          "doc_type": "DEED",
+          "seller": "DUARTE ARTHUR TR",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        },
+        {
+          "doc_num": "2026072166",
+          "filed": "2026-06-02",
+          "doc_type": "DEED",
+          "seller": "LITYNSKY MICHAEL B",
+          "auction": false,
+          "parcels": 1,
+          "apn": "525-1643-32",
+          "address": "3764 HOWE CT",
+          "city": "FREMONT",
+          "zip": "94538",
+          "use": "Single family",
+          "resold": false
+        },
+        {
+          "doc_num": "2026071128",
+          "filed": "2026-05-29",
+          "doc_type": "DEED",
+          "seller": "KIDD INVESTMENTS LLC",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        },
+        {
+          "doc_num": "2026019506",
+          "filed": "2026-02-13",
+          "doc_type": "DEED",
+          "seller": "REAL MOVEMENT REAL ESTATE LLC",
+          "auction": false,
+          "parcels": 1,
+          "apn": "80-38-45-3",
+          "address": "1512 ORIOLE AVE",
+          "city": "ASHLAND",
+          "zip": "94578",
+          "use": "Single family",
+          "resold": true
+        },
+        {
+          "doc_num": "2025154457",
+          "filed": "2025-12-05",
+          "doc_type": "DEED",
+          "seller": "ALBRIGHT JAMES R TR",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        }
+      ]
+    },
+    {
       "name": "SAT CAPITAL GROUP LLC",
       "buyer_type": "Investor",
       "mail_address": "621 CAMBRIAN DR",
@@ -2499,128 +2635,6 @@
           "city": "OAKLAND",
           "zip": "94608",
           "use": "Multi-unit residential",
-          "resold": false
-        }
-      ]
-    },
-    {
-      "name": "ANSON CAUSEWAY BAY FINANCIAL LLC",
-      "buyer_type": "Investor",
-      "mail_address": "662 DOUGLAS DR",
-      "mail_city": "SAN LEANDRO",
-      "mail_state": "CA",
-      "mail_zip": "94577",
-      "address_status": "Verified",
-      "purchases": 7,
-      "auction_purchases": 0,
-      "sales": 7,
-      "last_purchase": "2026-09-17",
-      "first_purchase": "2025-12-05",
-      "cities": [
-        "ASHLAND",
-        "FREMONT"
-      ],
-      "tags": [
-        "Repeat buyer",
-        "Flipper (resold a property)"
-      ],
-      "properties": [
-        {
-          "doc_num": "2026118270",
-          "filed": "2026-09-17",
-          "doc_type": "DEED",
-          "seller": "SAT CAPITAL GROUP LLC",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
-        },
-        {
-          "doc_num": "2026088522",
-          "filed": "2026-07-08",
-          "doc_type": "DEED",
-          "seller": "SAT CAPITAL GROUP LLC",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
-        },
-        {
-          "doc_num": "2026082137",
-          "filed": "2026-06-24",
-          "doc_type": "DEED",
-          "seller": "DUARTE ARTHUR TR",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
-        },
-        {
-          "doc_num": "2026072166",
-          "filed": "2026-06-02",
-          "doc_type": "DEED",
-          "seller": "LITYNSKY MICHAEL B",
-          "auction": false,
-          "parcels": 1,
-          "apn": "525-1643-32",
-          "address": "3764 HOWE CT",
-          "city": "FREMONT",
-          "zip": "94538",
-          "use": "Single family",
-          "resold": false
-        },
-        {
-          "doc_num": "2026071128",
-          "filed": "2026-05-29",
-          "doc_type": "DEED",
-          "seller": "KIDD INVESTMENTS LLC",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
-        },
-        {
-          "doc_num": "2026019506",
-          "filed": "2026-02-13",
-          "doc_type": "DEED",
-          "seller": "REAL MOVEMENT REAL ESTATE LLC",
-          "auction": false,
-          "parcels": 1,
-          "apn": "80-38-45-3",
-          "address": "1512 ORIOLE AVE",
-          "city": "ASHLAND",
-          "zip": "94578",
-          "use": "Single family",
-          "resold": true
-        },
-        {
-          "doc_num": "2025154457",
-          "filed": "2025-12-05",
-          "doc_type": "DEED",
-          "seller": "ALBRIGHT JAMES R TR",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
           "resold": false
         }
       ]
@@ -5588,6 +5602,72 @@
       ]
     },
     {
+      "name": "MENA ESTATES LLC",
+      "buyer_type": "Investor",
+      "mail_address": "249 W JACKSON ST",
+      "mail_city": "HAYWARD",
+      "mail_state": "CA",
+      "mail_zip": "94544",
+      "address_status": "Verified",
+      "purchases": 3,
+      "auction_purchases": 0,
+      "sales": 4,
+      "last_purchase": "2026-10-13",
+      "first_purchase": "2025-11-13",
+      "cities": [
+        "HAYWARD",
+        "UNION CITY"
+      ],
+      "tags": [
+        "Repeat buyer",
+        "Flipper (resold a property)"
+      ],
+      "properties": [
+        {
+          "doc_num": "2026129637",
+          "filed": "2026-10-13",
+          "doc_type": "DEED",
+          "seller": "LOCHE EVELYN TR",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        },
+        {
+          "doc_num": "2026050425",
+          "filed": "2026-04-17",
+          "doc_type": "DEED",
+          "seller": "REYES JOSE ALFONSO TR",
+          "auction": false,
+          "parcels": 1,
+          "apn": "543-404-35",
+          "address": "32639 NOAH DR",
+          "city": "UNION CITY",
+          "zip": "94587",
+          "use": "Single family",
+          "resold": false
+        },
+        {
+          "doc_num": "2025143121",
+          "filed": "2025-11-13",
+          "doc_type": "DEED",
+          "seller": "STONE LADONNA TR",
+          "auction": false,
+          "parcels": 1,
+          "apn": "443-75-2",
+          "address": "25353 TARMAN AVE",
+          "city": "HAYWARD",
+          "zip": "94544",
+          "use": "Single family",
+          "resold": false
+        }
+      ]
+    },
+    {
       "name": "NOORSAN LLC",
       "buyer_type": "Investor",
       "mail_address": "233 E WEDDEL DR G",
@@ -6310,7 +6390,7 @@
       "address_status": "Verified",
       "purchases": 3,
       "auction_purchases": 0,
-      "sales": 2,
+      "sales": 1,
       "last_purchase": "2026-06-15",
       "first_purchase": "2025-12-18",
       "cities": [
@@ -10310,58 +10390,6 @@
           "city": "LIVERMORE",
           "zip": "94550",
           "use": "Multi-unit residential",
-          "resold": false
-        }
-      ]
-    },
-    {
-      "name": "MENA ESTATES LLC",
-      "buyer_type": "Investor",
-      "mail_address": "249 W JACKSON ST",
-      "mail_city": "HAYWARD",
-      "mail_state": "CA",
-      "mail_zip": "94544",
-      "address_status": "Verified",
-      "purchases": 2,
-      "auction_purchases": 0,
-      "sales": 3,
-      "last_purchase": "2026-04-17",
-      "first_purchase": "2025-11-13",
-      "cities": [
-        "HAYWARD",
-        "UNION CITY"
-      ],
-      "tags": [
-        "Repeat buyer",
-        "Flipper (resold a property)"
-      ],
-      "properties": [
-        {
-          "doc_num": "2026050425",
-          "filed": "2026-04-17",
-          "doc_type": "DEED",
-          "seller": "REYES JOSE ALFONSO TR",
-          "auction": false,
-          "parcels": 1,
-          "apn": "543-404-35",
-          "address": "32639 NOAH DR",
-          "city": "UNION CITY",
-          "zip": "94587",
-          "use": "Single family",
-          "resold": false
-        },
-        {
-          "doc_num": "2025143121",
-          "filed": "2025-11-13",
-          "doc_type": "DEED",
-          "seller": "STONE LADONNA TR",
-          "auction": false,
-          "parcels": 1,
-          "apn": "443-75-2",
-          "address": "25353 TARMAN AVE",
-          "city": "HAYWARD",
-          "zip": "94544",
-          "use": "Single family",
           "resold": false
         }
       ]
@@ -39569,103 +39597,101 @@
       ]
     },
     {
-      "name": "STEPHEN ANTHONY MANAGEMENT LLC TR",
+      "name": "COPPER LEAF PROPERTIES LLC",
       "buyer_type": "Investor",
-      "mail_address": "7601 HOSPITAL DR 104A",
-      "mail_city": "SACRAMENTO",
-      "mail_state": "CA",
-      "mail_zip": "95823",
-      "address_status": "Verified",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 0,
       "sales": 0,
-      "last_purchase": "2025-10-14",
-      "first_purchase": "2025-10-14",
-      "cities": [
-        "PLEASANTON"
-      ],
+      "last_purchase": "2026-10-13",
+      "first_purchase": "2026-10-13",
+      "cities": [],
       "tags": [],
       "properties": [
         {
-          "doc_num": "2025128301",
-          "filed": "2025-10-14",
+          "doc_num": "2026129549",
+          "filed": "2026-10-13",
           "doc_type": "DEED",
-          "seller": "KALTHOFF KATHERINE L",
+          "seller": "MORROW CLARESSA TR",
           "auction": false,
-          "parcels": 1,
-          "apn": "947-4-2-14",
-          "address": "5587 SUNOL BLVD",
-          "city": "PLEASANTON",
-          "zip": "94566",
-          "use": "Commercial / other",
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
           "resold": false
         }
       ]
     },
     {
-      "name": "KONNECT COMMUNICATIONS LLC",
+      "name": "SHARK INVESTMENT GROUP INC",
       "buyer_type": "Investor",
-      "mail_address": "2053 GRANT RD 324",
-      "mail_city": "LOS ALTOS",
-      "mail_state": "CA",
-      "mail_zip": "94024",
-      "address_status": "Verified",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 0,
-      "sales": 0,
-      "last_purchase": "2025-10-14",
-      "first_purchase": "2025-10-14",
-      "cities": [
-        "BERKELEY"
+      "sales": 1,
+      "last_purchase": "2026-10-13",
+      "first_purchase": "2026-10-13",
+      "cities": [],
+      "tags": [
+        "Flipper (resold a property)"
       ],
-      "tags": [],
       "properties": [
         {
-          "doc_num": "2025128519",
-          "filed": "2025-10-14",
+          "doc_num": "2026129648",
+          "filed": "2026-10-13",
           "doc_type": "DEED",
-          "seller": "CROUSE BERND TR",
+          "seller": "MICHAEL JANICE LOPEZ CEPERO & SADOWAY FAMILY TRUST",
           "auction": false,
-          "parcels": 1,
-          "apn": "60-2493-12-1",
-          "address": "1344 SUMMIT RD",
-          "city": "BERKELEY",
-          "zip": "94708",
-          "use": "Single family",
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
           "resold": false
         }
       ]
     },
     {
-      "name": "422 LAGUNITAS II LLC",
+      "name": "TOWN BROTHERS LLC",
       "buyer_type": "Investor",
-      "mail_address": "137 N LARCHMONT BLVD 127",
-      "mail_city": "LOS ANGELES",
-      "mail_state": "CA",
-      "mail_zip": "90004",
-      "address_status": "Verified",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 0,
       "sales": 0,
-      "last_purchase": "2025-10-14",
-      "first_purchase": "2025-10-14",
+      "last_purchase": "2026-10-13",
+      "first_purchase": "2026-10-13",
       "cities": [
         "OAKLAND"
       ],
       "tags": [],
       "properties": [
         {
-          "doc_num": "2025128597",
-          "filed": "2025-10-14",
+          "doc_num": "2026129748",
+          "filed": "2026-10-13",
           "doc_type": "DEED",
-          "seller": "AGONAFER TANYA",
+          "seller": "HARMAN MANAGEMENT CORPORATION",
           "auction": false,
           "parcels": 1,
-          "apn": "10-781-13",
-          "address": "422 LAGUNITAS AVE",
+          "apn": "39-3311-26-1",
+          "address": "7272 INTERNATIONAL BLVD",
           "city": "OAKLAND",
-          "zip": "94610",
-          "use": "Single family",
+          "zip": "94621",
+          "use": "Commercial / other",
           "resold": false
         }
       ]
@@ -41834,7 +41860,9 @@
       "sales": 0,
       "last_purchase": "2026-09-25",
       "first_purchase": "2026-09-25",
-      "cities": [],
+      "cities": [
+        "ALAMEDA"
+      ],
       "tags": [],
       "properties": [
         {
@@ -41843,12 +41871,12 @@
           "doc_type": "DEED",
           "seller": "GARFINKLE M JAY IND & TR",
           "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
+          "parcels": 1,
+          "apn": "70-181-44",
+          "address": "954 PARK ST",
+          "city": "ALAMEDA",
+          "zip": "94501",
+          "use": "Multi-unit residential",
           "resold": false
         }
       ]
@@ -42490,7 +42518,9 @@
       "sales": 0,
       "last_purchase": "2026-09-21",
       "first_purchase": "2026-09-21",
-      "cities": [],
+      "cities": [
+        "ALAMEDA"
+      ],
       "tags": [],
       "properties": [
         {
@@ -42499,12 +42529,12 @@
           "doc_type": "DEED",
           "seller": "HANSEN JULIE M TR",
           "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
+          "parcels": 1,
+          "apn": "70-151-27",
+          "address": "1223 PEASE CT",
+          "city": "ALAMEDA",
+          "zip": "94501",
+          "use": "Multi-unit residential",
           "resold": false
         }
       ]
@@ -44059,7 +44089,9 @@
       "sales": 0,
       "last_purchase": "2026-09-09",
       "first_purchase": "2026-09-09",
-      "cities": [],
+      "cities": [
+        "ALAMEDA"
+      ],
       "tags": [],
       "properties": [
         {
@@ -44068,12 +44100,12 @@
           "doc_type": "DEED",
           "seller": "HOWITT DAVID",
           "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
+          "parcels": 1,
+          "apn": "69-48-3",
+          "address": "2840 ADAMS ST",
+          "city": "ALAMEDA",
+          "zip": "94501",
+          "use": "Single family",
           "resold": false
         }
       ]
@@ -56861,14 +56893,18 @@
       "mail_city": "",
       "mail_state": "",
       "mail_zip": "",
-      "address_status": "Pending county update",
+      "address_status": "Not on county roll (resold)",
       "purchases": 1,
       "auction_purchases": 0,
-      "sales": 0,
+      "sales": 1,
       "last_purchase": "2025-10-21",
       "first_purchase": "2025-10-21",
-      "cities": [],
-      "tags": [],
+      "cities": [
+        "ALAMEDA"
+      ],
+      "tags": [
+        "Flipper (resold a property)"
+      ],
       "properties": [
         {
           "doc_num": "2025132356",
@@ -56876,13 +56912,13 @@
           "doc_type": "DEED",
           "seller": "KANE MARIE E TR",
           "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
+          "parcels": 1,
+          "apn": "71-277-3",
+          "address": "1808 SANTA CLARA AVE",
+          "city": "ALAMEDA",
+          "zip": "94501",
+          "use": "Single family",
+          "resold": true
         }
       ]
     },
@@ -57262,7 +57298,7 @@
       "address_status": "Verified",
       "purchases": 5,
       "auction_purchases": 0,
-      "sales": 67,
+      "sales": 68,
       "last_purchase": "2026-08-07",
       "first_purchase": "2025-11-07",
       "cities": [
