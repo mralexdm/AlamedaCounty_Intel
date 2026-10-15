@@ -1,24 +1,24 @@
 {
-  "fetched_at": "2026-10-14T07:34:54.559873+00:00",
+  "fetched_at": "2026-10-15T07:37:31.770592+00:00",
   "source": "Alameda County Clerk-Recorder deeds + Assessor parcel roll",
   "date_range": {
-    "from": "2025-10-15",
-    "to": "2026-10-14",
+    "from": "2025-10-16",
+    "to": "2026-10-15",
     "lookback_days": 365
   },
   "coverage": {
     "days_in_window": 365,
     "days_scanned": 354,
-    "oldest_scanned": "2025-10-15",
-    "newest_scanned": "2026-10-14"
+    "oldest_scanned": "2025-10-16",
+    "newest_scanned": "2026-10-15"
   },
   "parcel_layer_through": "2026-09-02",
   "total": 1489,
-  "with_address": 891,
+  "with_address": 887,
   "repeat_buyers": 224,
   "skipped": {
-    "not_target": 1848,
-    "self_transfer": 353
+    "not_target": 1846,
+    "self_transfer": 350
   },
   "buyers": [
     {
@@ -499,7 +499,7 @@
       "address_status": "Verified",
       "purchases": 12,
       "auction_purchases": 0,
-      "sales": 31,
+      "sales": 30,
       "last_purchase": "2026-08-10",
       "first_purchase": "2025-11-10",
       "cities": [
@@ -4212,101 +4212,6 @@
       ]
     },
     {
-      "name": "WH1 LLC",
-      "buyer_type": "Investor",
-      "mail_address": "2015 MANHATTAN BEACH BLVD 100",
-      "mail_city": "REDONDO BEACH",
-      "mail_state": "CA",
-      "mail_zip": "90278",
-      "address_status": "Verified",
-      "purchases": 5,
-      "auction_purchases": 0,
-      "sales": 6,
-      "last_purchase": "2026-03-10",
-      "first_purchase": "2025-10-15",
-      "cities": [
-        "BERKELEY",
-        "FREMONT",
-        "HAYWARD"
-      ],
-      "tags": [
-        "Repeat buyer",
-        "Flipper (resold a property)"
-      ],
-      "properties": [
-        {
-          "doc_num": "2026032442",
-          "filed": "2026-03-10",
-          "doc_type": "DEED",
-          "seller": "THOMPSON RANDALL ADMR",
-          "auction": false,
-          "parcels": 1,
-          "apn": "53-1676-11",
-          "address": "1701 RUSSELL ST",
-          "city": "BERKELEY",
-          "zip": "94703",
-          "use": "Single family",
-          "resold": false
-        },
-        {
-          "doc_num": "2026031033",
-          "filed": "2026-03-06",
-          "doc_type": "DEED",
-          "seller": "TOMA DANNY H TR",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
-        },
-        {
-          "doc_num": "2026007776",
-          "filed": "2026-01-21",
-          "doc_type": "DEED",
-          "seller": "FERNANDEZ ALEX B TR",
-          "auction": false,
-          "parcels": 1,
-          "apn": "81D-1904-99",
-          "address": "3531 LA MESA DR",
-          "city": "HAYWARD",
-          "zip": "94542",
-          "use": "Single family",
-          "resold": false
-        },
-        {
-          "doc_num": "2025144324",
-          "filed": "2025-11-14",
-          "doc_type": "DEED",
-          "seller": "KITAUCHI KAY",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
-        },
-        {
-          "doc_num": "2025129348",
-          "filed": "2025-10-15",
-          "doc_type": "DEED",
-          "seller": "SANTOS ROBERT C M TRUST",
-          "auction": false,
-          "parcels": 1,
-          "apn": "519-1197-63",
-          "address": "47768 WABANA ST",
-          "city": "FREMONT",
-          "zip": "94539",
-          "use": "Single family",
-          "resold": false
-        }
-      ]
-    },
-    {
       "name": "JL CAPITAL LLC",
       "buyer_type": "Investor",
       "mail_address": "2740 SAND HILL RD 100",
@@ -5370,6 +5275,86 @@
       ]
     },
     {
+      "name": "WH1 LLC",
+      "buyer_type": "Investor",
+      "mail_address": "2015 MANHATTAN BEACH BLVD 100",
+      "mail_city": "REDONDO BEACH",
+      "mail_state": "CA",
+      "mail_zip": "90278",
+      "address_status": "Verified",
+      "purchases": 4,
+      "auction_purchases": 0,
+      "sales": 6,
+      "last_purchase": "2026-03-10",
+      "first_purchase": "2025-11-14",
+      "cities": [
+        "BERKELEY",
+        "HAYWARD"
+      ],
+      "tags": [
+        "Repeat buyer",
+        "Flipper (resold a property)"
+      ],
+      "properties": [
+        {
+          "doc_num": "2026032442",
+          "filed": "2026-03-10",
+          "doc_type": "DEED",
+          "seller": "THOMPSON RANDALL ADMR",
+          "auction": false,
+          "parcels": 1,
+          "apn": "53-1676-11",
+          "address": "1701 RUSSELL ST",
+          "city": "BERKELEY",
+          "zip": "94703",
+          "use": "Single family",
+          "resold": false
+        },
+        {
+          "doc_num": "2026031033",
+          "filed": "2026-03-06",
+          "doc_type": "DEED",
+          "seller": "TOMA DANNY H TR",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        },
+        {
+          "doc_num": "2026007776",
+          "filed": "2026-01-21",
+          "doc_type": "DEED",
+          "seller": "FERNANDEZ ALEX B TR",
+          "auction": false,
+          "parcels": 1,
+          "apn": "81D-1904-99",
+          "address": "3531 LA MESA DR",
+          "city": "HAYWARD",
+          "zip": "94542",
+          "use": "Single family",
+          "resold": false
+        },
+        {
+          "doc_num": "2025144324",
+          "filed": "2025-11-14",
+          "doc_type": "DEED",
+          "seller": "KITAUCHI KAY",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        }
+      ]
+    },
+    {
       "name": "WEST WINTON LLC",
       "buyer_type": "Investor",
       "mail_address": "",
@@ -5875,6 +5860,7 @@
       "last_purchase": "2026-09-22",
       "first_purchase": "2026-06-10",
       "cities": [
+        "ALBANY",
         "BERKELEY"
       ],
       "tags": [
@@ -5901,12 +5887,12 @@
           "doc_type": "DEED",
           "seller": "SUN XIN",
           "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
+          "parcels": 1,
+          "apn": "65-2655-46",
+          "address": "1037 CORNELL AVE",
+          "city": "ALBANY",
+          "zip": "94706",
+          "use": "Single family",
           "resold": false
         },
         {
@@ -6130,7 +6116,7 @@
       "address_status": "Verified",
       "purchases": 3,
       "auction_purchases": 0,
-      "sales": 2,
+      "sales": 3,
       "last_purchase": "2026-08-10",
       "first_purchase": "2025-11-26",
       "cities": [
@@ -11314,7 +11300,7 @@
       "address_status": "Verified",
       "purchases": 2,
       "auction_purchases": 0,
-      "sales": 1,
+      "sales": 2,
       "last_purchase": "2026-02-20",
       "first_purchase": "2025-11-24",
       "cities": [
@@ -12576,7 +12562,9 @@
       "sales": 0,
       "last_purchase": "2026-09-21",
       "first_purchase": "2026-09-15",
-      "cities": [],
+      "cities": [
+        "ALBANY"
+      ],
       "tags": [
         "Repeat buyer"
       ],
@@ -12601,12 +12589,12 @@
           "doc_type": "DEED",
           "seller": "1501 SOLANO AVENUE LLC",
           "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
+          "parcels": 1,
+          "apn": "67-2848-17",
+          "address": "1501 SOLANO AVE",
+          "city": "ALBANY",
+          "zip": "94707",
+          "use": "Commercial / other",
           "resold": false
         }
       ]
@@ -16819,7 +16807,7 @@
       "address_status": "Verified",
       "purchases": 1,
       "auction_purchases": 0,
-      "sales": 2,
+      "sales": 3,
       "last_purchase": "2026-06-03",
       "first_purchase": "2026-06-03",
       "cities": [
@@ -22245,13 +22233,15 @@
       "address_status": "Verified",
       "purchases": 1,
       "auction_purchases": 0,
-      "sales": 0,
+      "sales": 1,
       "last_purchase": "2026-04-08",
       "first_purchase": "2026-04-08",
       "cities": [
         "FREMONT"
       ],
-      "tags": [],
+      "tags": [
+        "Flipper (resold a property)"
+      ],
       "properties": [
         {
           "doc_num": "2026046044",
@@ -35125,15 +35115,13 @@
       "address_status": "Verified",
       "purchases": 1,
       "auction_purchases": 0,
-      "sales": 1,
+      "sales": 0,
       "last_purchase": "2025-11-26",
       "first_purchase": "2025-11-26",
       "cities": [
         "OAKLAND"
       ],
-      "tags": [
-        "Flipper (resold a property)"
-      ],
+      "tags": [],
       "properties": [
         {
           "doc_num": "2025149513",
@@ -39461,136 +39449,200 @@
       ]
     },
     {
-      "name": "NEW PATH PROPERTIES LLC",
+      "name": "DRS GROUP MANAGEMENT LLC",
       "buyer_type": "Investor",
-      "mail_address": "1603 N HIGHLAND AVE",
-      "mail_city": "RIPON",
-      "mail_state": "CA",
-      "mail_zip": "95366",
-      "address_status": "Verified",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 0,
       "sales": 0,
-      "last_purchase": "2025-10-15",
-      "first_purchase": "2025-10-15",
-      "cities": [
-        "HAYWARD"
-      ],
+      "last_purchase": "2026-10-14",
+      "first_purchase": "2026-10-14",
+      "cities": [],
       "tags": [],
       "properties": [
         {
-          "doc_num": "2025129057",
-          "filed": "2025-10-15",
+          "doc_num": "2026129877",
+          "filed": "2026-10-14",
           "doc_type": "DEED",
-          "seller": "SENNA RENE TR",
+          "seller": "HAMDILLAH LLC",
           "auction": false,
-          "parcels": 1,
-          "apn": "83-450-4-8",
-          "address": "29303 PACIFIC ST",
-          "city": "HAYWARD",
-          "zip": "94544",
-          "use": "Commercial / other",
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
           "resold": false
         }
       ]
     },
     {
-      "name": "5445 BROADWAY LLC",
+      "name": "1036 60TH ST OWNER LLC",
       "buyer_type": "Investor",
-      "mail_address": "22544 MAIN ST",
-      "mail_city": "HAYWARD",
-      "mail_state": "CA",
-      "mail_zip": "94541",
-      "address_status": "Verified",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 0,
       "sales": 0,
-      "last_purchase": "2025-10-15",
-      "first_purchase": "2025-10-15",
+      "last_purchase": "2026-10-14",
+      "first_purchase": "2026-10-14",
       "cities": [
         "OAKLAND"
       ],
       "tags": [],
       "properties": [
         {
-          "doc_num": "2025129369",
-          "filed": "2025-10-15",
+          "doc_num": "2026129938",
+          "filed": "2026-10-14",
           "doc_type": "DEED",
-          "seller": "WINOKUR PETER III TR",
+          "seller": "NADLER ERAN TR",
           "auction": false,
           "parcels": 1,
-          "apn": "48A-7038-14",
-          "address": "5445 BROADWAY",
+          "apn": "15-1338-14-3",
+          "address": "1036 60TH ST",
           "city": "OAKLAND",
-          "zip": "94618",
+          "zip": "94608",
           "use": "Multi-unit residential",
           "resold": false
         }
       ]
     },
     {
-      "name": "MG HARDER ROAD LLC",
+      "name": "785 JNS LLC",
       "buyer_type": "Investor",
-      "mail_address": "10660 WILSHIRE BLVD 1601",
-      "mail_city": "LOS ANGELES",
-      "mail_state": "CA",
-      "mail_zip": "90024",
-      "address_status": "Verified",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 0,
       "sales": 0,
-      "last_purchase": "2025-10-15",
-      "first_purchase": "2025-10-15",
-      "cities": [
-        "HAYWARD"
-      ],
-      "tags": [],
-      "properties": [
-        {
-          "doc_num": "2025129383",
-          "filed": "2025-10-15",
-          "doc_type": "DEED",
-          "seller": "MGP XII HAYWARD CENTER LLC",
-          "auction": false,
-          "parcels": 1,
-          "apn": "452-20-16",
-          "address": "691 HARDER RD",
-          "city": "HAYWARD",
-          "zip": "94544",
-          "use": "Commercial / other",
-          "resold": false
-        }
-      ]
-    },
-    {
-      "name": "TNG 400 30TH LLC",
-      "buyer_type": "Investor",
-      "mail_address": "6114 LASALLE AVE 599",
-      "mail_city": "OAKLAND",
-      "mail_state": "CA",
-      "mail_zip": "94611",
-      "address_status": "Verified",
-      "purchases": 1,
-      "auction_purchases": 0,
-      "sales": 0,
-      "last_purchase": "2025-10-15",
-      "first_purchase": "2025-10-15",
+      "last_purchase": "2026-10-14",
+      "first_purchase": "2026-10-14",
       "cities": [
         "OAKLAND"
       ],
       "tags": [],
       "properties": [
         {
-          "doc_num": "2025129413",
-          "filed": "2025-10-15",
+          "doc_num": "2026130029",
+          "filed": "2026-10-14",
           "doc_type": "DEED",
-          "seller": "HPD 400 30TH STREET LLC",
+          "seller": "SISTER HOUSE LLC",
           "auction": false,
           "parcels": 1,
-          "apn": "9-746-30",
-          "address": "400 30TH ST",
+          "apn": "8-630-32",
+          "address": "1555 LAKESIDE DR",
           "city": "OAKLAND",
-          "zip": "94609",
+          "zip": "94612",
+          "use": "Condo / townhome",
+          "resold": false
+        }
+      ]
+    },
+    {
+      "name": "ALCJ HOLDINGS LLC",
+      "buyer_type": "Investor",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
+      "purchases": 1,
+      "auction_purchases": 0,
+      "sales": 0,
+      "last_purchase": "2026-10-14",
+      "first_purchase": "2026-10-14",
+      "cities": [],
+      "tags": [],
+      "properties": [
+        {
+          "doc_num": "2026130049",
+          "filed": "2026-10-14",
+          "doc_type": "DEED",
+          "seller": "JASZEWSKI ANDREW TR",
+          "auction": false,
+          "parcels": 0,
+          "apn": "",
+          "address": "",
+          "city": "",
+          "zip": "",
+          "use": "",
+          "resold": false
+        }
+      ]
+    },
+    {
+      "name": "RESIDENTIAL REAL ESTATE DESIGN & SOLUTIONS INC",
+      "buyer_type": "Investor",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
+      "purchases": 1,
+      "auction_purchases": 0,
+      "sales": 0,
+      "last_purchase": "2026-10-14",
+      "first_purchase": "2026-10-14",
+      "cities": [
+        "HAYWARD"
+      ],
+      "tags": [],
+      "properties": [
+        {
+          "doc_num": "2026130301",
+          "filed": "2026-10-14",
+          "doc_type": "DEED",
+          "seller": "KENT BEVERLY C",
+          "auction": false,
+          "parcels": 1,
+          "apn": "81D-1907-25",
+          "address": "3671 SKYLINE DR",
+          "city": "HAYWARD",
+          "zip": "94542",
+          "use": "Single family",
+          "resold": false
+        }
+      ]
+    },
+    {
+      "name": "KARMUWALA LLC",
+      "buyer_type": "Investor",
+      "mail_address": "",
+      "mail_city": "",
+      "mail_state": "",
+      "mail_zip": "",
+      "address_status": "Pending county update",
+      "purchases": 1,
+      "auction_purchases": 0,
+      "sales": 0,
+      "last_purchase": "2026-10-14",
+      "first_purchase": "2026-10-14",
+      "cities": [
+        "DUBLIN"
+      ],
+      "tags": [],
+      "properties": [
+        {
+          "doc_num": "2026130334",
+          "filed": "2026-10-14",
+          "doc_type": "DEED",
+          "seller": "GANEM INVESTMENTS LLC TR",
+          "auction": false,
+          "parcels": 1,
+          "apn": "986-35-5",
+          "address": "4600 DUBLIN BLVD A",
+          "city": "DUBLIN",
+          "zip": "94568",
           "use": "Commercial / other",
           "resold": false
         }
@@ -40934,7 +40986,7 @@
       "address_status": "Pending county update",
       "purchases": 1,
       "auction_purchases": 1,
-      "sales": 17,
+      "sales": 18,
       "last_purchase": "2026-10-01",
       "first_purchase": "2026-10-01",
       "cities": [],
@@ -57030,76 +57082,6 @@
       ]
     },
     {
-      "name": "ESTOPINAL INVESTMENT GROUP LLC",
-      "buyer_type": "Investor",
-      "mail_address": "",
-      "mail_city": "",
-      "mail_state": "",
-      "mail_zip": "",
-      "address_status": "Pending county update",
-      "purchases": 1,
-      "auction_purchases": 0,
-      "sales": 1,
-      "last_purchase": "2025-10-15",
-      "first_purchase": "2025-10-15",
-      "cities": [],
-      "tags": [
-        "Flipper (resold a property)"
-      ],
-      "properties": [
-        {
-          "doc_num": "2025129080",
-          "filed": "2025-10-15",
-          "doc_type": "DEED",
-          "seller": "GLEN85 LLC",
-          "auction": false,
-          "parcels": 0,
-          "apn": "",
-          "address": "",
-          "city": "",
-          "zip": "",
-          "use": "",
-          "resold": false
-        }
-      ]
-    },
-    {
-      "name": "OPENRIDGE INVESTMENTS LLC",
-      "buyer_type": "Investor",
-      "mail_address": "",
-      "mail_city": "",
-      "mail_state": "",
-      "mail_zip": "",
-      "address_status": "Pending county update",
-      "purchases": 1,
-      "auction_purchases": 0,
-      "sales": 1,
-      "last_purchase": "2025-10-15",
-      "first_purchase": "2025-10-15",
-      "cities": [
-        "LIVERMORE"
-      ],
-      "tags": [
-        "Flipper (resold a property)"
-      ],
-      "properties": [
-        {
-          "doc_num": "2025129277",
-          "filed": "2025-10-15",
-          "doc_type": "DEED",
-          "seller": "CHAPMAN VICKIE L",
-          "auction": false,
-          "parcels": 1,
-          "apn": "99-1308-50-1",
-          "address": "4712 SCENIC AVE",
-          "city": "LIVERMORE",
-          "zip": "94551",
-          "use": "Single family",
-          "resold": false
-        }
-      ]
-    },
-    {
       "name": "OPENDOOR PROPERTY TRUST I",
       "buyer_type": "Institutional / builder",
       "mail_address": "1295 W WASHINGTON ST 115",
@@ -57107,15 +57089,16 @@
       "mail_state": "AZ",
       "mail_zip": "85288",
       "address_status": "Verified",
-      "purchases": 5,
+      "purchases": 6,
       "auction_purchases": 0,
       "sales": 4,
-      "last_purchase": "2026-09-14",
+      "last_purchase": "2026-10-14",
       "first_purchase": "2025-12-22",
       "cities": [
         "FREMONT",
         "NEWARK",
-        "PLEASANTON"
+        "PLEASANTON",
+        "UNION CITY"
       ],
       "tags": [
         "Repeat buyer",
@@ -57123,6 +57106,20 @@
         "Institutional / builder"
       ],
       "properties": [
+        {
+          "doc_num": "2026130313",
+          "filed": "2026-10-14",
+          "doc_type": "DEED",
+          "seller": "STARK RYAN A",
+          "auction": false,
+          "parcels": 1,
+          "apn": "87-32-34",
+          "address": "281 RIVIERA DR",
+          "city": "UNION CITY",
+          "zip": "94587",
+          "use": "Single family",
+          "resold": false
+        },
         {
           "doc_num": "2026117026",
           "filed": "2026-09-14",

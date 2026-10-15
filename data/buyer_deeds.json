@@ -1,11 +1,5 @@
 {
  "scanned_days": {
-  "2025-10-15": {
-   "total": 132,
-   "parsed": 132,
-   "complete": true,
-   "scanned_at": "2026-09-30T07:44:51+00:00"
-  },
   "2025-10-16": {
    "total": 130,
    "parsed": 130,
@@ -118,7 +112,7 @@
    "total": 100,
    "parsed": 99,
    "complete": false,
-   "scanned_at": "2026-10-14T07:34:27+00:00"
+   "scanned_at": "2026-10-15T07:37:01+00:00"
   },
   "2025-11-04": {
    "total": 132,
@@ -178,7 +172,7 @@
    "total": 112,
    "parsed": 111,
    "complete": false,
-   "scanned_at": "2026-10-14T07:34:21+00:00"
+   "scanned_at": "2026-10-15T07:36:54+00:00"
   },
   "2025-11-14": {
    "total": 137,
@@ -202,7 +196,7 @@
    "total": 116,
    "parsed": 115,
    "complete": false,
-   "scanned_at": "2026-10-14T07:34:14+00:00"
+   "scanned_at": "2026-10-15T07:36:47+00:00"
   },
   "2025-11-18": {
    "total": 136,
@@ -730,7 +724,7 @@
    "total": 160,
    "parsed": 159,
    "complete": false,
-   "scanned_at": "2026-10-14T07:34:08+00:00"
+   "scanned_at": "2026-10-15T07:36:40+00:00"
   },
   "2026-02-14": {
    "total": 0,
@@ -772,7 +766,7 @@
    "total": 136,
    "parsed": 135,
    "complete": false,
-   "scanned_at": "2026-10-14T07:33:59+00:00"
+   "scanned_at": "2026-10-15T07:36:30+00:00"
   },
   "2026-02-21": {
    "total": 0,
@@ -1234,7 +1228,7 @@
    "total": 109,
    "parsed": 107,
    "complete": false,
-   "scanned_at": "2026-10-14T07:33:51+00:00"
+   "scanned_at": "2026-10-15T07:36:22+00:00"
   },
   "2026-05-09": {
    "total": 0,
@@ -1420,7 +1414,7 @@
    "total": 134,
    "parsed": 132,
    "complete": false,
-   "scanned_at": "2026-10-14T07:33:44+00:00"
+   "scanned_at": "2026-10-15T07:36:15+00:00"
   },
   "2026-06-09": {
    "total": 123,
@@ -1714,7 +1708,7 @@
    "total": 139,
    "parsed": 138,
    "complete": false,
-   "scanned_at": "2026-10-14T07:33:37+00:00"
+   "scanned_at": "2026-10-15T07:36:06+00:00"
   },
   "2026-07-28": {
    "total": 113,
@@ -1882,7 +1876,7 @@
    "total": 76,
    "parsed": 75,
    "complete": false,
-   "scanned_at": "2026-10-14T07:33:29+00:00"
+   "scanned_at": "2026-10-15T07:35:58+00:00"
   },
   "2026-08-25": {
    "total": 126,
@@ -2032,7 +2026,7 @@
    "total": 120,
    "parsed": 119,
    "complete": false,
-   "scanned_at": "2026-10-14T07:33:23+00:00"
+   "scanned_at": "2026-10-15T07:35:52+00:00"
   },
   "2026-09-19": {
    "total": 0,
@@ -2158,231 +2152,46 @@
    "total": 137,
    "parsed": 134,
    "complete": false,
-   "scanned_at": "2026-10-14T07:33:05+00:00"
+   "scanned_at": "2026-10-15T07:35:45+00:00"
   },
   "2026-10-10": {
    "total": 0,
    "parsed": 0,
    "complete": true,
-   "scanned_at": "2026-10-14T07:32:57+00:00"
+   "scanned_at": "2026-10-15T07:35:36+00:00"
   },
   "2026-10-11": {
    "total": 0,
    "parsed": 0,
    "complete": true,
-   "scanned_at": "2026-10-14T07:32:56+00:00"
+   "scanned_at": "2026-10-15T07:35:34+00:00"
   },
   "2026-10-12": {
    "total": 73,
    "parsed": 73,
    "complete": true,
-   "scanned_at": "2026-10-14T07:32:54+00:00"
+   "scanned_at": "2026-10-15T07:35:32+00:00"
   },
   "2026-10-13": {
    "total": 114,
    "parsed": 114,
    "complete": true,
-   "scanned_at": "2026-10-14T07:32:50+00:00"
+   "scanned_at": "2026-10-15T07:35:28+00:00"
   },
   "2026-10-14": {
+   "total": 132,
+   "parsed": 132,
+   "complete": true,
+   "scanned_at": "2026-10-15T07:35:20+00:00"
+  },
+  "2026-10-15": {
    "total": 0,
    "parsed": 0,
    "complete": true,
-   "scanned_at": "2026-10-14T07:32:33+00:00"
+   "scanned_at": "2026-10-15T07:34:56+00:00"
   }
  },
  "deeds": {
-  "2025128936": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025128936",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "JPRFOXES LLC",
-   "grantee": "SAJUAN OCTAVIO JR",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025129057": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129057",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "SENNA RENE TR",
-   "grantee": "NEW PATH PROPERTIES LLC",
-   "grantor_more": true,
-   "grantee_more": false
-  },
-  "2025129078": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129078",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "GULFSTREAM PORTFOLIO MANAGEMENT LLC",
-   "grantee": "ESTOPINAL ANDREW W",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025129080": {
-   "apns": [
-    "12-987-26"
-   ],
-   "detail_checked": true,
-   "doc_num": "2025129080",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "GLEN85 LLC",
-   "grantee": "ESTOPINAL INVESTMENT GROUP LLC",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025129081": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129081",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "ESTOPINAL INVESTMENT GROUP LLC",
-   "grantee": "MARTIN FAMILY TRUST",
-   "grantor_more": true,
-   "grantee_more": true
-  },
-  "2025129147": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129147",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "FLORES FAMILY HOLDINGS LLC",
-   "grantee": "AU LEE FAMILY TRUST",
-   "grantor_more": false,
-   "grantee_more": true
-  },
-  "2025129240": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129240",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "BROOKFIELD VINE LLC",
-   "grantee": "DHAR BASANTI TR",
-   "grantor_more": false,
-   "grantee_more": true
-  },
-  "2025129277": {
-   "apns": [
-    "99-1308-50"
-   ],
-   "detail_checked": true,
-   "doc_num": "2025129277",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "CHAPMAN VICKIE L",
-   "grantee": "OPENRIDGE INVESTMENTS LLC",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025129298": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129298",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "2650 TELEGRAPH L P",
-   "grantee": "2650 TELEGRAPH L P",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025129348": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129348",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "SANTOS ROBERT C M TRUST",
-   "grantee": "WH1 LLC",
-   "grantor_more": true,
-   "grantee_more": false
-  },
-  "2025129369": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129369",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "WINOKUR PETER III TR",
-   "grantee": "5445 BROADWAY LLC",
-   "grantor_more": true,
-   "grantee_more": false
-  },
-  "2025129383": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129383",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "MGP XII HAYWARD CENTER LLC",
-   "grantee": "MG HARDER ROAD LLC",
-   "grantor_more": false,
-   "grantee_more": true
-  },
-  "2025129401": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129401",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "SUPER BAMBOO LLC",
-   "grantee": "GOLDEN JENG BUILDING SUPPLY",
-   "grantor_more": false,
-   "grantee_more": true
-  },
-  "2025129413": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129413",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "HPD 400 30TH STREET LLC",
-   "grantee": "TNG 400 30TH LLC",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025129433": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129433",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "BERKELEY EAST BAY HUMANE SOCIETY INC",
-   "grantee": "BERKELEY EAST BAY HUMANE SOCIETY INC",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025129434": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129434",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "BERKELEY EAST BAY HUMANE SOCIETY INC",
-   "grantee": "BERKELEY EAST BAY HUMANE SOCIETY INC",
-   "grantor_more": false,
-   "grantee_more": false
-  },
-  "2025129439": {
-   "apns": [],
-   "detail_checked": false,
-   "doc_num": "2025129439",
-   "filed": "2025-10-15",
-   "doc_type": "DEED",
-   "grantor": "LS ALAMEDA MARINA LLC",
-   "grantee": "KUMPIN MARIKA",
-   "grantor_more": false,
-   "grantee_more": true
-  },
   "2025129560": {
    "apns": [],
    "detail_checked": false,
@@ -48812,6 +48621,152 @@
    "doc_type": "DEED",
    "grantor": "TH EAST RANCH DUBLIN LLC",
    "grantee": "PENG PENG",
+   "grantor_more": false,
+   "grantee_more": true
+  },
+  "2026129856": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026129856",
+   "filed": "2026-10-14",
+   "doc_type": "TRUSTEES DEED",
+   "grantor": "QUALITY LOAN SERVICE CORPORATION TR",
+   "grantee": "DEUTSCHE BANK NATIONAL TRUST CO TR",
+   "grantor_more": true,
+   "grantee_more": true
+  },
+  "2026129877": {
+   "apns": [
+    "53-1696-1"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026129877",
+   "filed": "2026-10-14",
+   "doc_type": "DEED",
+   "grantor": "HAMDILLAH LLC",
+   "grantee": "DRS GROUP MANAGEMENT LLC",
+   "grantor_more": false,
+   "grantee_more": false
+  },
+  "2026129909": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026129909",
+   "filed": "2026-10-14",
+   "doc_type": "DEED",
+   "grantor": "ADROIT CAPITAL LLC",
+   "grantee": "BAHETI AKSHAY RAJESH",
+   "grantor_more": false,
+   "grantee_more": true
+  },
+  "2026129938": {
+   "apns": [
+    "15-1338-14-3"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026129938",
+   "filed": "2026-10-14",
+   "doc_type": "DEED",
+   "grantor": "NADLER ERAN TR",
+   "grantee": "1036 60TH ST OWNER LLC",
+   "grantor_more": true,
+   "grantee_more": false
+  },
+  "2026130029": {
+   "apns": [
+    "8-630-32"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026130029",
+   "filed": "2026-10-14",
+   "doc_type": "DEED",
+   "grantor": "SISTER HOUSE LLC",
+   "grantee": "785 JNS LLC",
+   "grantor_more": false,
+   "grantee_more": false
+  },
+  "2026130049": {
+   "apns": [
+    "14-1230-12"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026130049",
+   "filed": "2026-10-14",
+   "doc_type": "DEED",
+   "grantor": "JASZEWSKI ANDREW TR",
+   "grantee": "ALCJ HOLDINGS LLC",
+   "grantor_more": true,
+   "grantee_more": false
+  },
+  "2026130189": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026130189",
+   "filed": "2026-10-14",
+   "doc_type": "DEED",
+   "grantor": "NEATLY HOME LLC",
+   "grantee": "AMZALLAG DAMIEN CLEMENT",
+   "grantor_more": false,
+   "grantee_more": true
+  },
+  "2026130301": {
+   "apns": [
+    "81D-1907-25"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026130301",
+   "filed": "2026-10-14",
+   "doc_type": "DEED",
+   "grantor": "KENT BEVERLY C",
+   "grantee": "RESIDENTIAL REAL ESTATE DESIGN & SOLUTIONS INC",
+   "grantor_more": true,
+   "grantee_more": false
+  },
+  "2026130313": {
+   "apns": [
+    "87-32-34"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026130313",
+   "filed": "2026-10-14",
+   "doc_type": "DEED",
+   "grantor": "STARK RYAN A",
+   "grantee": "OPENDOOR PROPERTY TRUST I",
+   "grantor_more": false,
+   "grantee_more": false
+  },
+  "2026130329": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026130329",
+   "filed": "2026-10-14",
+   "doc_type": "DEED",
+   "grantor": "BAY TOPE INVESTMENT LLC",
+   "grantee": "TO STEPHANIE T",
+   "grantor_more": false,
+   "grantee_more": false
+  },
+  "2026130334": {
+   "apns": [
+    "986-35-5"
+   ],
+   "detail_checked": true,
+   "doc_num": "2026130334",
+   "filed": "2026-10-14",
+   "doc_type": "DEED",
+   "grantor": "GANEM INVESTMENTS LLC TR",
+   "grantee": "KARMUWALA LLC",
+   "grantor_more": true,
+   "grantee_more": false
+  },
+  "2026130347": {
+   "apns": [],
+   "detail_checked": false,
+   "doc_num": "2026130347",
+   "filed": "2026-10-14",
+   "doc_type": "DEED",
+   "grantor": "SAS FLIPS LLC",
+   "grantee": "CASTILLO MARIA DE LOS ANGELES CRUZ",
    "grantor_more": false,
    "grantee_more": true
   }
